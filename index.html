@@ -27,20 +27,23 @@
 
 <body>
   <nav class="dflex">
-    <div>
+    <div class="logoham dflex">
       <p class="logoText">Portfolio</p>
+      <div class="hamburger dflex">
+        <input type="checkbox" name="check" id="check" class="check" />
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
     </div>
+
     <ul class="navlist dflex">
       <li class="navitem dflex"><a href="#about">About</a></li>
-      <li class="navitem dflex"><a href="#projects">Projects</a></li>
       <li class="navitem dflex"><a href="#skills">Skills</a></li>
+      <li class="navitem dflex"><a href="#projects">Projects</a></li>
       <li class="navitem dflex"><a href="#contact">Contact</a></li>
     </ul>
-    <div class="hamburger dflex">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
+
   </nav>
   <main>
     <section class="dflex about" id="about">
@@ -83,7 +86,7 @@
           </a>
         </div>
       </div>
-      <div class="rightAbout">
+      <div class="rightAbout ">
         <div class="imgContOuter">
 
 
@@ -92,6 +95,7 @@
             <img src="assets/pfpavatar.jpg" alt="pfp" />
           </div>
         </div>
+        <div class="alias"><span title="Alais at SDSLabs">c o s i g n</span></div>
       </div>
     </section>
     <section class="skills section_s_p" id="skills">
@@ -118,51 +122,51 @@
               </ul>
             </li>
           </ul>
-          For Web Devlopment ,I have learned React+ Django Tech stack which i used in the <a
-            href="#cinequest">cinequest</a>.<br />
+          For Web Devlopment ,I have learned React+ Django Tech stack which i used in the <a href="#cinequest"
+            class="skillLink">cinequest</a>.<br />
           I know the basics of andriod development via java and made an
-          <a href="#expense-manager">app</a> in React Native
+          <a href="#expense-manager" class="skillLink">app</a> in React Native
           </p>
         </div>
         <div class="rightSkills">
           <div class="iconCont dflex">
-            <i class="fa-brands fa-java"></i>
+            <i class="fa-brands fa-java skillicon"></i>
             <p>Java</p>
 
           </div>
           <div class="iconCont dflex">
-            <i class="fa-brands fa-python"></i>
+            <i class="fa-brands fa-python skillicon"></i>
             <p>Python</p>
 
           </div>
           <div class="iconCont dflex">
-            <i class="fa-brands fa-js"></i>
+            <i class="fa-brands fa-js skillicon"></i>
             <p>JavaScript</p>
 
           </div>
           <div class="iconCont dflex">
-            <i class="devicon-cplusplus-plain"></i>
+            <i class="devicon-cplusplus-plain skillicon"></i>
             <p>C++</p>
           </div>
           <div class="iconCont dflex">
-            <i class="fa-brands fa-html5"></i>
+            <i class="fa-brands fa-html5 skillicon"></i>
             <p>Html</p>
           </div>
           <div class="iconCont dflex">
-            <i class="fa-brands fa-css3-alt"></i>
+            <i class="fa-brands fa-css3-alt skillicon"></i>
             <p>css</p>
           </div>
           <div class="iconCont dflex">
-            <i class="fa-brands fa-react"></i>
+            <i class="fa-brands fa-react skillicon"></i>
             <p>React</p>
           </div>
           <div class="iconCont dflex">
-            <i class="devicon-mysql-original"></i>
+            <i class="devicon-mysql-original skillicon"></i>
             <p>Mysql</p>
           </div>
           <div class="iconCont dflex">
 
-            <i class="devicon-django-plain"></i>
+            <i class="devicon-django-plain skillicon"></i>
             <p>Django</p>
           </div>
         </div>
@@ -172,7 +176,7 @@
     <section class="projects section_s_p" id="projects">
       <p class="sectionHeading">PROJECTS</p>
       <div class="projectCont">
-        <div class="projectCard">
+        <div class="projectCard" id="cinequest">
           <div class="leftCard">
             <div class="topLeftCard">
               <p class="projectName">CineQuest</p>
@@ -197,7 +201,7 @@
             </a>
           </div>
         </div>
-        <div class="projectCard">
+        <div class="projectCard" id="getitasap">
           <div class="leftCard">
             <div class="topLeftCard">
               <p class="projectName">GetItAsap</p>
@@ -217,12 +221,14 @@
               <li>DbSqlite</li>
 
             </ul>
+
             <a>
-              <div class="viewMore">See More</div>
+              <div class="viewMore"><a href="https://github.com/Wizard-League/GetItAsap" target="_blank">See More</a>
+              </div>
             </a>
           </div>
         </div>
-        <div class="projectCard">
+        <div class="projectCard" id="expense-manager">
           <div class="leftCard">
             <div class="topLeftCard">
               <p class="projectName">Expense-Manager</p>
@@ -241,11 +247,12 @@
               <li>FireBase</li>
             </ul>
             <a>
-              <div class="viewMore">See More</div>
+              <div class="viewMore"><a href="https://github.com/Arshdeep54/Expense-manager" target="_blank">See More</a>
+              </div>
             </a>
           </div>
         </div>
-        <div class="projectCard">
+        <div class="projectCard" id="soduko">
           <div class="leftCard">
             <div class="topLeftCard">
               <p class="projectName">Soduku Solver</p>
@@ -263,7 +270,8 @@
               <li>Java Swing</li>
 
             </ul><a>
-              <div class="viewMore">See More</div>
+              <div class="viewMore"><a href="https://github.com/Arshdeep54/SudukoJava" target="_blank">See More</a>
+              </div>
             </a>
           </div>
         </div>
