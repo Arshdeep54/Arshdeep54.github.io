@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+nav {
+    height: 4.4rem;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+}
+ul.navlist {
+    width: 25%;
+    margin: 0 30%;
+}
+p.logoText {
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.dflex{
+    display: flex;
+}
+li.navitem {
+    list-style: none;
+    font-size: 1.25rem;
+    margin-right: 0.93rem;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 2.5rem;
+    margin-right: 1.5rem;
+}
+.line{
+    width: 1.8rem;
+    height: 0.09rem;
+    background-color: black;
+}
+
+/* About Section */
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.about {
+    width: 91%;
+    height: 30rem;
+    margin: auto;
+    margin-top: 3rem;
+    background-color: bisque;
+    justify-content: space-between;
+}
+
+/* Left About  */
+.leftAbout {
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    animation: fade ease 3s;
+}
+.topleftAbout {
+    margin-bottom: 1rem;
+}
+p.nameText {
+    font-size: 3.7rem;
+}
+p.emailText {
+    font-size: 1.2rem;
+}
+.emailText a {
+    text-decoration: none;
+    color: grey;
+    cursor: pointer;
+}
+.midLeftAbout p {
+    font-size: 18px;
+}
+.botLeftAbout {
+    height: 2rem;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+.botLeftAbout a {
+    text-decoration: none;
+    color: black;
+}
+i.fa-brands {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+i.fa-brands:hover{
+    color: rgb(122, 67, 0);
+}
+/* Right About */
+.rightAbout {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgContOuter{
+ position: relative;
+ width: 17rem;
+ height: 18.5rem;
+ 
+ 
+}
+@keyframes pfpResize {
+    0% {
+       width: 18rem;
+       height: 18rem;
+       box-shadow: 0px 0px 2px 1px green;
+    }
+    100% {
+        width: 17rem;
+       height: 17rem;
+       box-shadow: 0px -16px 33px 3px green;
+    }
+}
+.imgCont {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 17rem;
+    height: 17rem;    
+    background-color: #ddb8f9;;
+    border-radius:50% ;
+    animation: pfpResize ease 2s;
+    animation-iteration-count: 1;
+    box-shadow: 0px -16px 33px 3px #ed7c7c;
+        /* top: -5rem;
+    
+    left: -3rem; */
+    overflow: hidden;
+}
+.imgCont img{
+ width: 100%;
+ height: 100%;
+    
+
+}
+.skills{
+    width: 90%;
+    height: 30rem ;
+    margin:auto;
+    margin-top: 3rem;
+    padding: 3rem;
+    background-color: #ffe4c4;
+}
+.skills h1 {
+    font-size: 2.3rem;
+}
