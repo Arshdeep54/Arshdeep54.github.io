@@ -16,6 +16,20 @@ a {
     text-decoration: none;
     color: black;
 }
+::-webkit-scrollbar {
+    height: 0.3rem;
+    width: 0.3rem;
+  }
+  
+  
+  ::-webkit-scrollbar-track {
+    background: #fffefe;
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bgcolor1)
+  }
 .skillLink{
     text-decoration-line: underline;
 }
