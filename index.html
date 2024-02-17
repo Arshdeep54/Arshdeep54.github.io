@@ -20,6 +20,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
     rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -43,17 +46,28 @@
     <section class="dflex about" id="about">
       <div class="leftAbout">
         <div class="topleftAbout">
-          <p class="nameText">Arshdeep Singh</p>
+          <p class="nameText">ARSHDEEP SINGH</p>
           <p class="emailText"><a href="mailto:balarsh40@gmail.com">balarsh40@gmail.com</a></p>
         </div>
-        <div class="midLeftAboutc dflex">
-          <div class="hifen"></div>
+        <div class="midLeftAbout dflex">
 
           <p>
 
-            Pursuing Btech in Mechanical Engineering at IIT Roorkee,Developer at SDSLabs
+            Pursuing Btech in Mechanical Engineering at
+            <span class="iitr">
+              <a href="https://iitr.ac.in/" target="_blank">IIT Roorkee</a>
+            </span> , Developer at
+            <span class="labsText">
+              <a href="https://sdslabs.co/" target="_blank">SDSLabs</a>
+              <span class="sdsinfo">SDSLabs or Software Development Section Laboratories is a student-run technical
+                group at IIT Roorkee, which aims to encourage the development of technology and innovation in the campus
+                and beyond. We believe in learning and sharing knowledge; collaboration and experimentation; and human
+                interaction that matters the most.</span>
+            </span>
+          </p>
         </div>
-        </p>
+        <div class="locCont"><i class="fa-solid fa-location-dot"></i><a href="https://maps.app.goo.gl/oxqVdHrDfCun3EBJ8"
+            target="_blank">Amritsar,India</a></div>
         <div class="botLeftAbout">
           <a href="https://github.com/Arshdeep54" target="_blank">
 
@@ -80,7 +94,7 @@
         </div>
       </div>
     </section>
-    <section class="skills" id="skills">
+    <section class="skills section_s_p" id="skills">
       <p class="sectionHeading">SKILLS</p>
       <div class="skillCont dflex">
         <div class="leftSkills">
@@ -155,6 +169,119 @@
       </div>
 
     </section>
+    <section class="projects section_s_p" id="projects">
+      <p class="sectionHeading">PROJECTS</p>
+      <div class="projectCont">
+        <div class="projectCard">
+          <div class="leftCard">
+            <div class="topLeftCard">
+              <p class="projectName">CineQuest</p>
+              <p class="projectDate">January,2024</p>
+            </div>
+            <div class="botLeftCard">
+              <p>Movies Website where a film critic or viewer can review the movies or even make a favorite movies list
+                .One can also interact with other users on the websites via likes,dislike and comments in teh reviews
+              </p><a>
+                <div class="viewMore">See More</div>
+              </a>
+            </div>
+          </div>
+          <div class="rightCard">
+            <p>Tech Stack</p>
+            <ul>
+              <li>React js</li>
+              <li>Django </li>
+              <li>MySql</li>
+              <li>Beatiful Soup</li>
+            </ul>
+          </div>
+        </div>
+        <div class="projectCard">
+          <div class="leftCard">
+            <div class="topLeftCard">
+              <p class="projectName">GetItAsap</p>
+              <p class="projectDate">November,2023</p>
+            </div>
+            <div class="botLeftCard">
+              <p>Any user in IIT Roorkee campus can search for particular stationery item and all the nearest shops wiht
+                price
+                of item will show up and user can also see if the stationery is open or close</p><a>
+                <div class="viewMore">See More</div>
+              </a>
+            </div>
+          </div>
+          <div class="rightCard">
+            <p>Tech Stack</p>
+            <ul>
+              <li>React</li>
+              <li>Django</li>
+              <li>DbSqlite</li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="projectCard">
+          <div class="leftCard">
+            <div class="topLeftCard">
+              <p class="projectName">Expense-Manager</p>
+              <p class="projectDate">August,2023</p>
+            </div>
+            <div class="botLeftCard">
+              <p>Movile Application where one can create an account wiht intial bank amount and can manage the expenses
+                like credit and debit with description.Also user can see the transactions history and balance offcourse
+              </p><a>
+                <div class="viewMore">See More</div>
+              </a>
+            </div>
+          </div>
+          <div class="rightCard">
+            <p>Tech Stack</p>
+            <ul>
+              <li>React Native (Expo) </li>
+              <li>FireBase</li>
+            </ul>
+          </div>
+        </div>
+        <div class="projectCard">
+          <div class="leftCard">
+            <div class="topLeftCard">
+              <p class="projectName">Soduku Solver</p>
+              <p class="projectDate">April,2022</p>
+            </div>
+            <div class="botLeftCard">
+              <p>Desktop Application : User can fill the soduko grid with the numbers in the unsolved question and can
+                get the whole soduko solved</p><a>
+                <div class="viewMore">See More</div>
+              </a>
+            </div>
+          </div>
+          <div class="rightCard">
+            <p>Tech Stack</p>
+            <ul>
+              <li>Java</li>
+              <li>Java Swing</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact section_s_p" id="contact">
+      <p class="sectionHeading">CONTACT</p>
+      <form class="contactForm">
+        <div class="inputCont dflex">
+
+          <input type="text" class="yname" placeholder="Enter your name" />
+          <input type="email" name="yemail" id="email" class="yemail" placeholder="Enter your email" required />
+        </div>
+        <textarea name="message" id="message" placeholder="Type Your message here "></textarea>
+        <div class="btnCont dflex">
+
+          <input type="submit" value="Submit" class="submitbtn" />
+        </div>
+      </form>
+    </section>
+    <footer>@ 2024 .Made by Arshdeep Singh</footer>
   </main>
   <script src="https://kit.fontawesome.com/ea4f1b7a36.js" crossorigin="anonymous"></script>
 </body>

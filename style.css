@@ -1,17 +1,21 @@
 :root{
     --bggradient:linear-gradient(135deg, hsla(54, 13%, 15%, 1) 0%, hsla(227, 34%, 84%, 1) 100%);
+    --bggradientLogo: linear-gradient(90deg, hsla(214, 89%, 52%, 1) 0%, hsla(215, 76%, 87%, 1) 100%);
     --headGradient:linear-gradient(315deg, hsla(288, 100%, 97%, 1) 0%, hsla(298, 94%, 86%, 1) 100%);
+    --bgcolor1:#6FA9F5;
+    --bgcolor2:white;
 }
 body{
-    background: var(--bggradient);
+    background: var(--bgcolor1);
     margin: 0;
     padding:0;
     box-sizing: border-box;
 }
 nav {
     height: 4.4rem;
-    backdrop-filter: invert(6%) blur(1px);
+    /* backdrop-filter: invert(6%) blur(1px); */
         display: flex;
+        background: var(--bgcolor2);
     align-items: center;
 }
 ul.navlist {
@@ -22,7 +26,9 @@ p.logoText {
     font-family: "Fredoka", sans-serif; 
    font-size: 2rem;
     font-weight: 500;
-    background: var(--headGradient);
+    background: var(--bggradientLogo);
+    /* background: var(--bgcolor1); */
+    /* background: var(--headGradient); */
     background-clip: text;
     color: transparent;
     margin-left: 20px;
@@ -52,7 +58,8 @@ li.navitem:hover{
 li.navitem:hover::after{
    width: 100%;
    
-   background: var(--headGradient);
+   background: #1877F2;
+   /* background: var(--headGradient); */
 }
 
 .hamburger {
@@ -93,6 +100,8 @@ li.navitem:hover::after{
 .leftAbout {
     padding: 3rem 4rem;
     display: flex;
+    width: max-content;
+    min-width: 38rem;
     flex-direction: column;
     /* align-items: center; */
     justify-content: center;
@@ -105,9 +114,9 @@ li.navitem:hover::after{
     height: 7rem;
 }
 p.nameText {
-    font-family: "Karla", sans-serif;
-
-    font-size: 3.7rem;
+    font-family: "Josefin Sans", sans-serif;
+color: white;
+    font-size: 4.2rem;
 
 }
 p.emailText {
@@ -118,21 +127,70 @@ p.emailText {
 }
 .emailText a {
     text-decoration: none;
-    color: grey;
+    color: white;
     cursor: pointer;
 }
 .midLeftAbout{
     display: flex;
+    width: 23rem;
 
 }
+.labsText{
+    color: #bb0800;
+    font-weight: 600;
+    position: relative;
+}
+.labsText a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+.iitr a{
+    text-decoration: none;
+    /* color: inherit; */
+    cursor: pointer;
+    color: white;
+}
+.sdsinfo{
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    width: 22rem;
+    font-size: 1rem;
+    color: black;
+    background: #ffffff;
+    left: 0rem;
+    padding: 0.59rem;
+    border-radius: 0.51rem;
+    border: 0.1rem solid #bb0800;
+
+}
+.labsText:hover >.sdsinfo{
+    display: block;
+}
 .midLeftAbout p {
-    font-size: 18px;
+    font-size: 1.2rem;
+    font-family: 'karla',sans-serif;
+    margin-bottom:0rem ;
 }
 .hifen::after {
     content: '';
     width: 1rem;
     height: 0.5rem;
     background: black;
+}
+i.fa-solid.fa-location-dot {
+    font-size: 1.5rem;
+    padding: 0;
+    margin-right: 1rem;
+    margin-left: 0.5rem;
+}
+.locCont a {
+    text-decoration: none;
+    color: black;
+    text-decoration-line: underline;
+    font-size: 1.2rem;
+    font-family: 'Oswald',sans-serif;
 }
 .botLeftAbout {
     height: 2rem;
@@ -178,15 +236,15 @@ i.fa-brands:hover{
 }
 .imgCont {
     position: absolute;
-    bottom: 0;
+    bottom: 4rem;
     left: 0;
     width: 17rem;
     height: 17rem;    
-    background-color: #ddb8f9;;
+    background-color: #ffffff;;
     border-radius:50% ;
     animation: pfpResize ease 2s;
     animation-iteration-count: 1;
-    box-shadow: 0px -16px 33px 3px #ed7c7c;
+    box-shadow: 0px -16px 33px 3px #ffffff;
         /* top: -5rem;
     
     left: -3rem; */
@@ -198,11 +256,12 @@ i.fa-brands:hover{
     
 
 }
-.skills{
+.section_s_p{
     width: 90%;
-    height: 30rem ;
+    height: max-content;
+    min-height: 30rem;
     margin:auto;
-        margin-top: 0rem;
+    margin-top: 0rem;
     padding: 0rem 6rem;
     margin-bottom:2rem ;
     /* background-color: #ffe4c4; */
@@ -210,15 +269,22 @@ i.fa-brands:hover{
 .sectionHeading {
     font-size: 2.3rem;
     font-family: 'Oswald',sans-serif;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }
 .skillCont {
     width: 93%;
-    background: #a0a3a9;
+    background: #ffffff;
     height: max-content;
     min-height: 12rem;
     border-radius: 1rem 0rem 1rem 0rem;
     position: relative;
+    /* box-shadow: none; */
+    /* transition: box-shadow ease 1s; */
 }
+/* .skillCont:hover{
+    box-shadow: 0px 1rem 3rem 0.1rem #4a244e;
+} */
 .leftSkills {
     padding: 0 2.5rem;
     font-size: 1.2rem;
@@ -259,3 +325,117 @@ i{
 i:hover{
     color: rgb(122, 67, 0);
 }
+/* project Section  */
+.projectCont {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.projectCard {
+    width: 83%;
+    /* min-height: 12rem; */
+    height: 22rem;
+    background: #ffffff;
+    display: flex;
+    margin: 2rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    /* align-items: flex-start; */
+    justify-content: space-between;
+    transition: transform 0.3s ease-in-out;
+}
+.projectCard:hover{
+    transform: scale(1.03);
+    
+}
+.projectName {
+    margin: 0;
+    font-size: 2.5rem;
+    font-family: 'fredoka',sans-serif;
+}
+.projectDate {
+    margin: 0;
+    font-family: 'karla',sans-serif;
+    padding-left: 0.5rem;
+}
+.botLeftCard p {
+    margin: 2rem 0.5rem;
+    font-size: 1.4rem;
+    font-family: 'karla',sans-serif;
+}
+.inputCont {
+    justify-content: space-between;
+}
+form.contactForm {
+    width: 76%;
+    margin-left: 3rem;
+}
+textarea#message {
+    resize: none;
+    width: 96%;
+    height: 9rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background: white;
+    padding: 1rem;
+    /* backdrop-filter: brightness(1.3); */
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    font-family: karla,sans-serif;
+}
+.yname,.yemail {
+    height: 1.5rem;
+    width: 40%;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    background: white;
+    padding: 1rem;
+    /* backdrop-filter: brightness(1.3); */
+    margin-bottom: 0.5rem;
+}
+.btnCont {
+    align-items: end;
+    flex-direction: column;
+}
+.submitbtn{
+    width: 5rem;
+    height: 2rem;
+    font-size: 1.1rem;
+    border: none;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    outline: none;
+    background: white;
+    border-radius: 0.5rem;
+    /* backdrop-filter: brightness(1.3); */
+    cursor: pointer;
+}
+.submitbtn:hover{
+    /* backdrop-filter: brightness(1.2); */
+    background: rgb(201, 255, 255);
+}
+@media only screen and (max-width: 600px) {
+    nav{
+justify-content: space-between;
+flex-direction: column;
+height: max-content;
+    }
+    nav div{
+        width: 100%;
+    }
+    .logoText{
+        margin-bottom: 0.1rem;
+        margin-top: 0.1rem;
+        /* width: 100%;
+
+        border-bottom: 0.1rem solid black ; */
+    }
+    ul.navlist{
+flex-direction: column;
+      
+    }
+   
+  }
