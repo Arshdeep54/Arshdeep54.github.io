@@ -650,7 +650,7 @@ display: none;
     }
 
     .section_s_p {
-        margin-top: 13rem;
+        margin-top: 16rem;
         padding: 0rem 1rem;
     }
 
@@ -696,5 +696,9 @@ display: none;
     .yname,
     .yemail {
         width: 90%;
+    }
+    .alias{
+        margin-bottom: 1rem;
+
     }
 }
