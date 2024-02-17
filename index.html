@@ -7,7 +7,19 @@
   <title>Portfolio</title>
   <link href="style.css" rel="stylesheet" />
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@99.2,300..700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Ubuntu&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -16,10 +28,10 @@
       <p class="logoText">Portfolio</p>
     </div>
     <ul class="navlist dflex">
-      <li class="navitem">About</li>
-      <li class="navitem">Projects</li>
-      <li class="navitem">Skills</li>
-      <li class="navitem">Contact</li>
+      <li class="navitem dflex">About</li>
+      <li class="navitem dflex">Projects</li>
+      <li class="navitem dflex">Skills</li>
+      <li class="navitem dflex">Contact</li>
     </ul>
     <div class="hamburger dflex">
       <div class="line"></div>
@@ -34,7 +46,9 @@
           <p class="nameText">Arshdeep Singh</p>
           <p class="emailText"><a href="mailto:balarsh40@gmail.com">balarsh40@gmail.com</a></p>
         </div>
-        <div class="midLeftAbout">
+        <div class="midLeftAboutc dflex">
+          <div class="hifen"></div>
+
           <p>
 
             Pursuing Btech in Mechanical Engineering at IIT Roorkee,Developer at SDSLabs
@@ -45,16 +59,15 @@
 
             <i class="fa-brands fa-github"></i>
           </a>
-          <a  href='https://www.linkedin.com/in/arshdeep-singh-326815292/'
-          target='_blank'>
+          <a href='https://www.linkedin.com/in/arshdeep-singh-326815292/' target='_blank'>
 
             <i class="fa-brands fa-linkedin"></i>
           </a>
-          <a href='https://www.instagram.com/_arsh.bal_/'
-          target='_blank'>
+          <a href='https://www.instagram.com/_arsh.bal_/' target='_blank'>
 
-            <i class="fa-brands fa-instagram"></i></div>
-          </a>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        </a>
       </div>
       <div class="rightAbout">
         <div class="imgContOuter">
@@ -68,25 +81,79 @@
       </div>
     </section>
     <section class="skills" id="skills">
-      <h1>Skills</h1>
+      <p class="sectionHeading">SKILLS</p>
       <div class="skillCont dflex">
-      <div class="leftSkills">
-       <p>I am exploring since class VIII when i first came to know about Java ,first programming language i learned </p>
+        <div class="leftSkills">
+          <p>I am exploring different domains of development since class VIII when i first came to know about Java
+            ,first programming language i learned. some of the programming languaes i learned are :
+          <ul>
+            <li>Java <ul>
+                <li>Java Swing</li>
+              </ul>
+            </li>
+            <li>Python<ul>
+                <li>Pandas</li>
+                <li>MatplotLib</li>
+                <li>Django</li>
+              </ul>
+            </li>
+            <li>C++</li>
+            <li>JavaScript<ul>
+                <li>React.js</li>
+                <li>React Native</li>
+              </ul>
+            </li>
+          </ul>
+          For Web Devlopment ,I have learned React+ Django Tech stack which i used in the <a
+            href="#cinequest">cinequest</a>.<br />
+          I know the basics of andriod development via java and made an
+          <a href="#expense-manager">app</a> in React Native
+          </p>
+        </div>
+        <div class="rightSkills">
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-java"></i>
+            <p>Java</p>
+
+          </div>
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-python"></i>
+            <p>Python</p>
+
+          </div>
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-js"></i>
+            <p>JavaScript</p>
+
+          </div>
+          <div class="iconCont dflex">
+            <i class="devicon-cplusplus-plain"></i>
+            <p>C++</p>
+          </div>
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-html5"></i>
+            <p>Html</p>
+          </div>
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-css3-alt"></i>
+            <p>css</p>
+          </div>
+          <div class="iconCont dflex">
+            <i class="fa-brands fa-react"></i>
+            <p>React</p>
+          </div>
+          <div class="iconCont dflex">
+            <i class="devicon-mysql-original"></i>
+            <p>Mysql</p>
+          </div>
+          <div class="iconCont dflex">
+
+            <i class="devicon-django-plain"></i>
+            <p>Django</p>
+          </div>
+        </div>
       </div>
-      <div class="rightSkills">
-        <i class="fa-brands fa-java"></i>
-        <i class="fa-brands fa-python"></i>
-        <i class="fa-brands fa-js"></i>
-        <i class="devicon-cplusplus-plain"></i>
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-css3-alt"></i>
-        <i class="fa-brands fa-react"></i>
-        <i class="fa-solid fa-server"></i>
-        <i class="devicon-mysql-original"></i>
-        <i class="devicon-django-plain"></i>
-      </div>
-    </div>
-      
+
     </section>
   </main>
   <script src="https://kit.fontawesome.com/ea4f1b7a36.js" crossorigin="anonymous"></script>
