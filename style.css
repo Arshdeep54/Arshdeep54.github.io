@@ -384,14 +384,16 @@ i.fa-brands:hover {
 }
 
 .section_s_p {
-    width: 90%;
-    height: max-content;
-    min-height: 30rem;
-    margin: auto;
-    margin-top: 0rem;
-    padding: 4.4rem 6rem;
+   
+        width: 90%;
+        height: max-content;
+        min-height: 30rem;
+        margin: auto;
+        margin-top: 0rem;
+        padding: 4.4rem 0rem;
         margin-bottom: 2rem;
-    /* background-color: #ffe4c4; */
+        /* background-color: #ffe4c4; */
+
 }
 
 .sectionHeading {
@@ -561,21 +563,26 @@ i:hover {
 
 
 .contact{
-    padding: 0.4rem 6rem;
+    padding: 0.4rem 4rem;
 }
 .inputCont {
+    width: 75%;
     justify-content: space-between;
 }
 
 
 form.contactForm {
-    width: 76%;
-    margin-left: 3rem;
+    width: 95%;
+    padding: 1rem 4rem;
+    display: flex;
+    /* margin-left: 3rem; */
+    flex-direction: column;
+    align-items: center;
 }
 
 textarea#message {
     resize: none;
-    width: 96%;
+    width:72%;
     height: 9rem;
     padding: 1rem;
     border: none;
@@ -605,6 +612,7 @@ textarea#message {
 
 .btnCont {
     align-items: end;
+    width: 76%;
     flex-direction: column;
 }
 
@@ -773,7 +781,9 @@ left: 0;
     .projectCont {
         grid-template-columns: auto;
     }
-
+    .projectOuterCard {
+        width: 91%;
+    }
     .rightCard {
         width: 82%;
     }
@@ -786,14 +796,24 @@ left: 0;
     .contact {
         margin-top: 3rem;
     }
+    form.contactForm{
+        padding: 1rem 1rem;
+    }
 
     .inputCont {
         flex-direction: column;
+        width: 87%;
     }
 
     .yname,
     .yemail {
         width: 90%;
+    }
+    textarea#message{
+        width: 79%;
+    }
+    .btnCont{
+        width: 99%;
     }
     .alias{
         margin-bottom: 1rem;
