@@ -149,7 +149,23 @@ input[type="checkbox"] {
     }
 }
 
-
+@keyframes bgAnimationSKill{
+    0% {
+        background: linear-gradient(90deg, hsla(0, 0%, 91%, 1) 0%, hsla(214, 94%, 88%, 1) 100%);
+    }
+    25% {
+        background: linear-gradient(135deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 92.71%) 100%);
+    }
+    50% {
+        background: linear-gradient(180deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 96.59%) 100%);
+    }
+    75% {
+        background: linear-gradient(135deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 92.07%) 100%);
+    }
+    100% {
+        background: linear-gradient(90deg, hsla(0, 0%, 91%, 1) 0%, hsl(214deg 39.26% 93.76%) 100%);
+    }
+}
 .about {
     width: 91%;
     height: 30rem;
@@ -387,11 +403,13 @@ i.fa-brands:hover {
 
 .skillCont {
     width: 93%;
-    background: #ffffff;
+    background: white;
     height: max-content;
     min-height: 12rem;
     border-radius: 1rem 0rem 1rem 0rem;
     position: relative;
+    /* animation: bgAnimationSKill cubic-bezier(0.5, -0.13, 0.58, 1) 2s;
+    animation-iteration-count: infinite; */
     /* box-shadow: none; */
     /* transition: box-shadow ease 1s; */
 }
@@ -447,7 +465,7 @@ i:hover {
 /* project Section  */
 .projectCont {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
 }
 
 .projectCard {
@@ -496,6 +514,21 @@ i:hover {
 .viewMore:hover {
     background-color: #9ec8ff;
 }
+.projectOuterCard {
+    width: 100%;
+    /* width: 83%; */
+    /* min-height: 12rem; */
+    /* height: 22rem; */
+    /* background: #ffffff; */
+    display: flex;
+   
+    border-radius: 1rem;
+    padding: 2rem 0rem;
+    /* overflow: hidden; */
+    /* position: relative; */
+    align-items: center;
+    justify-content: center;
+}
 
 .projectCard:hover .rightCard {
     opacity: 1;
@@ -526,13 +559,14 @@ i:hover {
     font-family: 'karla', sans-serif;
 }
 
-.contact {
-    margin-top: 7rem;
-}
 
+.contact{
+    padding: 0.4rem 6rem;
+}
 .inputCont {
     justify-content: space-between;
 }
+
 
 form.contactForm {
     width: 76%;
@@ -608,6 +642,7 @@ footer {
         justify-content: space-between;
      
         height:3.4rem;
+        
     }
 
     nav div {
@@ -634,9 +669,10 @@ footer {
     } */
 
   input[type="checkbox"]:checked ~ ul.navlist {
-right: 0;
+left: 0;
      
     }
+ 
 
     .logoText {
         margin-bottom: 0.1rem;
@@ -651,14 +687,14 @@ right: 0;
         position: absolute;
         flex-direction: column;
         top: 3.3rem;
-        right: -110vw;
+        left: -110vw;
         align-items: center;
         justify-content: center;
         background-color: transparent;
-        backdrop-filter: blur(2.5rem);
+        backdrop-filter: blur(0.5rem);
         gap: 1em;
         width: 100%;
-        height: max-content;
+        height:11rem;
         margin: 0rem;
         transition: 0.5s;     
 
@@ -702,6 +738,7 @@ right: 0;
     }
 .sdsinfo{
     left: -19rem;
+    opacity: 0;
 }
     .section_s_p {
         margin-top: 4rem;
