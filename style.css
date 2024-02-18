@@ -3,37 +3,42 @@
     --bggradient2: linear-gradient(180deg, hsla(214, 87%, 70%, 1) 0%, hsla(214, 87%, 70%, 1) 54%, hsla(214, 100%, 93%, 1) 100%);
     --bggradientLogo: linear-gradient(90deg, hsla(214, 89%, 52%, 1) 0%, hsla(215, 76%, 87%, 1) 100%);
     --headGradient: linear-gradient(315deg, hsla(288, 100%, 97%, 1) 0%, hsla(298, 94%, 86%, 1) 100%);
-    --bgcolor1: #   ;
+    --bgcolor1: #;
     --bgcolor2: white;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
+
 body {
     background: var(--bggradient2);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
     color: black;
 }
+
 ::-webkit-scrollbar {
     height: 0.3rem;
     width: 0.3rem;
-  }
-  
-  
-  ::-webkit-scrollbar-track {
-    background: #fffefe;
-  }
-  
+}
 
-  ::-webkit-scrollbar-thumb {
+
+::-webkit-scrollbar-track {
+    background: #fffefe;
+}
+
+
+::-webkit-scrollbar-thumb {
     background: var(--bgcolor1)
-  }
-.skillLink{
+}
+
+.skillLink {
     text-decoration-line: underline;
 }
 
@@ -116,6 +121,7 @@ li.navitem:hover::after {
     margin-right: 1.5rem;
     width: max-content;
 }
+
 .labelCont {
     display: none;
     flex-direction: column;
@@ -126,6 +132,7 @@ li.navitem:hover::after {
     /* margin-right: 1.5rem;
     width: max-content; */
 }
+
 .line {
     width: 1.8rem;
     height: 0.09rem;
@@ -150,23 +157,28 @@ input[type="checkbox"] {
     }
 }
 
-@keyframes bgAnimationSKill{
+@keyframes bgAnimationSKill {
     0% {
         background: linear-gradient(90deg, hsla(0, 0%, 91%, 1) 0%, hsla(214, 94%, 88%, 1) 100%);
     }
+
     25% {
         background: linear-gradient(135deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 92.71%) 100%);
     }
+
     50% {
         background: linear-gradient(180deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 96.59%) 100%);
     }
+
     75% {
         background: linear-gradient(135deg, hsla(193, 100%, 97%, 1) 0%, hsl(213deg 100% 92.07%) 100%);
     }
+
     100% {
         background: linear-gradient(90deg, hsla(0, 0%, 91%, 1) 0%, hsl(214deg 39.26% 93.76%) 100%);
     }
 }
+
 .about {
     width: 91%;
     height: 30rem;
@@ -243,7 +255,7 @@ p.emailText {
 }
 
 .sdsinfo {
-    
+
     position: absolute;
     top: 1.5rem;
     width: 22rem;
@@ -284,15 +296,17 @@ i.fa-solid.fa-location-dot {
     margin-right: 1rem;
     margin-left: 0.5rem;
 }
-.locCont{
+
+.locCont {
     margin-top: 1.5rem;
 }
+
 .locCont a {
     text-decoration: none;
     color: black;
     text-decoration-line: underline;
     font-size: 1.2rem;
-    
+
     font-family: 'Oswald', sans-serif;
 }
 
@@ -317,7 +331,8 @@ i.fa-brands {
 i.fa-brands:hover {
     color: rgb(255, 255, 255);
 }
-.skillicon:hover{
+
+.skillicon:hover {
     color: grey !important;
 }
 
@@ -330,16 +345,17 @@ i.fa-brands:hover {
     flex-direction: column;
 
 }
+
 .alias {
-    
-        width: 100%;
-        margin-top: 1rem;
-        text-transform: capitalize;
-        display: flex;
-        text-align: justify;
-        font-size: 0.9rem;
-        justify-content: center;
-        word-spacing: 3rem;
+
+    width: 100%;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    display: flex;
+    text-align: justify;
+    font-size: 0.9rem;
+    justify-content: center;
+    word-spacing: 3rem;
 
 }
 
@@ -393,15 +409,15 @@ i.fa-brands:hover {
 }
 
 .section_s_p {
-   
-        width: 90%;
-        height: max-content;
-        min-height: 30rem;
-        margin: auto;
-        margin-top: 0rem;
-        padding: 4.4rem 0rem;
-        margin-bottom: 2rem;
-        /* background-color: #ffe4c4; */
+
+    width: 90%;
+    height: max-content;
+    min-height: 30rem;
+    margin: auto;
+    margin-top: 0rem;
+    padding: 4.4rem 0rem;
+    margin-bottom: 2rem;
+    /* background-color: #ffe4c4; */
 
 }
 
@@ -532,6 +548,7 @@ i:hover {
 .viewMore:hover {
     background-color: #9ec8ff;
 }
+
 .projectOuterCard {
     width: 100%;
     /* width: 83%; */
@@ -539,7 +556,7 @@ i:hover {
     /* height: 22rem; */
     /* background: #ffffff; */
     display: flex;
-   
+
     border-radius: 1rem;
     padding: 2rem 0rem;
     /* overflow: hidden; */
@@ -578,9 +595,10 @@ i:hover {
 }
 
 
-.contact{
+.contact {
     padding: 0.4rem 4rem;
 }
+
 .inputCont {
     width: 75%;
     justify-content: space-between;
@@ -598,7 +616,7 @@ form.contactForm {
 
 textarea#message {
     resize: none;
-    width:72%;
+    width: 72%;
     height: 9rem;
     padding: 1rem;
     border: none;
@@ -665,20 +683,20 @@ footer {
 @media only screen and (max-width: 600px) {
     nav {
         justify-content: space-between;
-     
-        height:3.4rem;
-        
+
+        height: 3.4rem;
+
     }
 
     nav div {
         width: 100%;
     }
 
-  .labelCont{
-    display: block;
-  }
+    .labelCont {
+        display: block;
+    }
 
-    .hamburger{
+    .hamburger {
         display: flex;
     }
 
@@ -693,11 +711,11 @@ footer {
         height: 100%;
     } */
 
-  input[type="checkbox"]:checked ~ ul.navlist {
-left: 0;
-     
+    input[type="checkbox"]:checked~ul.navlist {
+        left: 0;
+
     }
- 
+
 
     .logoText {
         margin-bottom: 0.1rem;
@@ -719,9 +737,9 @@ left: 0;
         backdrop-filter: blur(0.5rem);
         gap: 1em;
         width: 100%;
-        height:11rem;
+        height: 11rem;
         margin: 0rem;
-        transition: 0.5s;     
+        transition: 0.5s;
 
     }
 
@@ -761,10 +779,12 @@ left: 0;
         margin-bottom: 1rem;
         text-align: justify;
     }
-.sdsinfo{
-    left: -19rem;
-    opacity: 0;
-}
+
+    .sdsinfo {
+        left: -19rem;
+        opacity: 0;
+    }
+
     .section_s_p {
         margin-top: 4rem;
         padding: 0rem 1rem;
@@ -779,14 +799,18 @@ left: 0;
 
     .sectionHeading {
         border-top: 0.1rem solid white;
+        font-size: 2.3rem;
     }
-.skillCont{
-    width: 100%;
-}
-.leftSkills{
-    padding: 0 0.8rem;
-    text-align: justify;
-}
+
+    .skillCont {
+        width: 100%;
+    }
+
+    .leftSkills {
+        padding: 0 0.8rem;
+        text-align: justify;
+    }
+
     .rightSkills {
         display: none;
     }
@@ -796,11 +820,16 @@ left: 0;
     }
 
     .projectCont {
-        grid-template-columns: auto;
+        display: flex;
+        /* margin: auto; */
+        flex-direction: column;
+        align-items: center;
     }
+
     .projectOuterCard {
         width: 91%;
     }
+
     .rightCard {
         width: 82%;
     }
@@ -810,10 +839,15 @@ left: 0;
         height: 26rem;
     }
 
+    .projectName {
+        font-size: 1.9rem;
+    }
+
     .contact {
         margin-top: 3rem;
     }
-    form.contactForm{
+
+    form.contactForm {
         padding: 1rem 1rem;
     }
 
@@ -826,13 +860,16 @@ left: 0;
     .yemail {
         width: 90%;
     }
-    textarea#message{
+
+    textarea#message {
         width: 79%;
     }
-    .btnCont{
+
+    .btnCont {
         width: 99%;
     }
-    .alias{
+
+    .alias {
         margin-bottom: 1rem;
 
     }
