@@ -608,7 +608,8 @@ textarea#message {
     margin-right: 0.5rem;
     margin-top: 0.5rem;
     outline: none;
-    background-color: #70aaf5;
+    color: white;
+    background-color: hsla(214, 89%, 52%, 1);
     transition: background-color ease-in-out 0.3s;
     border-radius: 0.5rem;
     cursor: pointer;
