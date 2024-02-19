@@ -601,21 +601,21 @@ textarea#message {
 }
 
 .submitbtn {
-    width: 5rem;
-    height: 2rem;
-    font-size: 1.1rem;
+    width: 6rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
     border: none;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     margin-top: 0.5rem;
     outline: none;
-    background-color: white;
+    background-color: #70aaf5;
     transition: background-color ease-in-out 0.3s;
     border-radius: 0.5rem;
     cursor: pointer;
 }
 
 .submitbtn:hover {
-    background-color: rgb(201, 255, 255);
+    background-color: rgb(255, 255, 255);
 }
 
 footer {
@@ -802,6 +802,9 @@ footer {
 
     .btnCont {
         width: 99%;
+    }
+    .submitbtn{
+        margin-right: 1.8rem;
     }
 
     .alias {
