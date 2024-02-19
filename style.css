@@ -3,7 +3,6 @@
     --bggradient2: linear-gradient(180deg, hsla(214, 87%, 70%, 1) 0%, hsla(214, 87%, 70%, 1) 54%, hsla(214, 100%, 93%, 1) 100%);
     --bggradientLogo: linear-gradient(90deg, hsla(214, 89%, 52%, 1) 0%, hsla(215, 76%, 87%, 1) 100%);
     --headGradient: linear-gradient(315deg, hsla(288, 100%, 97%, 1) 0%, hsla(298, 94%, 86%, 1) 100%);
-    --bgcolor1: #;
     --bgcolor2: white;
 }
 
@@ -44,14 +43,12 @@ a {
 
 nav {
     height: 4.4rem;
-    /* backdrop-filter: invert(6%) blur(1px); */
-    /* display: flex; */
+
     background: var(--bgcolor2);
     align-items: center;
     justify-content: center;
     top: 0;
     z-index: 11;
-    /* padding: 1em; */
     position: sticky;
 }
 
@@ -65,8 +62,6 @@ p.logoText {
     font-size: 2rem;
     font-weight: 500;
     background: var(--bggradientLogo);
-    /* background: var(--bgcolor1); */
-    /* background: var(--headGradient); */
     background-clip: text;
     color: transparent;
     margin-left: 20px;
@@ -109,7 +104,6 @@ li.navitem:hover::after {
     width: 100%;
 
     background: #1877F2;
-    /* background: var(--headGradient); */
 }
 
 .hamburger {
@@ -127,10 +121,7 @@ li.navitem:hover::after {
     flex-direction: column;
     justify-content: space-evenly;
     height: 2.5rem;
-    /* display: flex; */
     position: relative;
-    /* margin-right: 1.5rem;
-    width: max-content; */
 }
 
 .line {
@@ -140,7 +131,6 @@ li.navitem:hover::after {
 }
 
 input[type="checkbox"] {
-    /* display: none; */
     appearance: none;
     -webkit-appearance: none;
 }
@@ -165,7 +155,6 @@ input[type="checkbox"] {
     margin: auto;
     margin-top: 3rem;
     padding-top: 4rem;
-    /* background-color: bisque; */
     justify-content: space-between;
 }
 
@@ -176,9 +165,7 @@ input[type="checkbox"] {
     width: max-content;
     min-width: 38rem;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
-    /* animation: fade ease 3s; */
 }
 
 .topleftAbout {
@@ -229,7 +216,6 @@ p.emailText {
 
 .iitr a {
     text-decoration: none;
-    /* color: inherit; */
     cursor: pointer;
     color: black;
 }
@@ -370,14 +356,12 @@ i.fa-brands:hover {
     width: 17rem;
     height: 17rem;
     background-color: #ffffff;
-    ;
+
     border-radius: 50%;
     animation: pfpResize ease 2s;
     animation-iteration-count: infinite;
     box-shadow: 0px -16px 33px 3px #ffffff;
-    /* top: -5rem;
-    
-    left: -3rem; */
+
     overflow: hidden;
 }
 
@@ -401,7 +385,6 @@ i.fa-brands:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: #ffe4c4; */
 
 }
 
@@ -423,15 +406,10 @@ i.fa-brands:hover {
     min-height: 12rem;
     border-radius: 1rem 0rem 1rem 0rem;
     position: relative;
-    /* animation: bgAnimationSKill cubic-bezier(0.5, -0.13, 0.58, 1) 2s;
-    animation-iteration-count: infinite; */
-    /* box-shadow: none; */
-    /* transition: box-shadow ease 1s; */
+
 }
 
-/* .skillCont:hover{
-    box-shadow: 0px 1rem 3rem 0.1rem #4a244e;
-} */
+
 .leftSkills {
     padding: 0 2.5rem;
     font-size: 1.2rem;
@@ -456,7 +434,6 @@ i.fa-brands:hover {
     top: -2rem;
     left: 1rem;
     font-size: 1.2rem;
-    /* border: 1px solid black; */
     background: #b6d5ff;
     font-weight: 500;
     border-radius: 0.1rem;
@@ -486,7 +463,6 @@ i:hover {
 
 .projectCard {
     width: 83%;
-    /* min-height: 12rem; */
     height: 22rem;
     background: #ffffff;
     display: flex;
@@ -495,7 +471,6 @@ i:hover {
     padding: 1rem;
     overflow: hidden;
     position: relative;
-    /* align-items: flex-start; */
     justify-content: space-between;
     transition: transform 0.3s ease-in-out;
 }
@@ -535,16 +510,10 @@ i:hover {
 
 .projectOuterCard {
     width: 100%;
-    /* width: 83%; */
-    /* min-height: 12rem; */
-    /* height: 22rem; */
-    /* background: #ffffff; */
     display: flex;
 
     border-radius: 1rem;
     padding: 2rem 0rem;
-    /* overflow: hidden; */
-    /* position: relative; */
     align-items: center;
     justify-content: center;
 }
@@ -593,7 +562,6 @@ form.contactForm {
     width: 95%;
     padding: 1rem 4rem;
     display: flex;
-    /* margin-left: 3rem; */
     flex-direction: column;
     align-items: center;
 }
@@ -607,7 +575,6 @@ textarea#message {
     outline: none;
     background: white;
     padding: 1rem;
-    /* backdrop-filter: brightness(1.3); */
     font-size: 1.2rem;
     border-radius: 1rem;
     font-family: karla, sans-serif;
@@ -624,7 +591,6 @@ textarea#message {
     border-radius: 0.7rem;
     background: white;
     padding: 1rem;
-    /* backdrop-filter: brightness(1.3); */
     margin-bottom: 1.5rem;
 }
 
@@ -645,12 +611,10 @@ textarea#message {
     background-color: white;
     transition: background-color ease-in-out 0.3s;
     border-radius: 0.5rem;
-    /* backdrop-filter: brightness(1.3); */
     cursor: pointer;
 }
 
 .submitbtn:hover {
-    /* backdrop-filter: brightness(1.2); */
     background-color: rgb(201, 255, 255);
 }
 
@@ -684,16 +648,7 @@ footer {
         display: flex;
     }
 
-    /* .check {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        display: block;
-        left: 0;
-        width: 100%;
-        z-index: 10;
-        height: 100%;
-    } */
+
 
     input[type="checkbox"]:checked~ul.navlist {
         left: 0;
@@ -704,9 +659,6 @@ footer {
     .logoText {
         margin-bottom: 0.1rem;
         margin-top: 0.1rem;
-        /* width: 100%;
-
-        border-bottom: 0.1rem solid black ; */
     }
 
     ul.navlist {
@@ -805,7 +757,6 @@ footer {
 
     .projectCont {
         display: flex;
-        /* margin: auto; */
         flex-direction: column;
         align-items: center;
     }
