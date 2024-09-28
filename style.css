@@ -410,11 +410,14 @@ i.fa-brands:hover {
 
 }
 
-
+.skillsCol{
+    justify-content: space-between;
+}
 .leftSkills {
     padding: 0 2.5rem;
     font-size: 1.2rem;
     font-family: 'karla';
+    width: 75%;
 }
 
 .rightSkills {
@@ -694,7 +697,9 @@ footer {
     .skillCont {
         width: 100%;
     }
-
+    .skillsCol{
+        flex-direction: column;
+    }
     .leftSkills {
         padding: 0 0.8rem;
         text-align: justify;
