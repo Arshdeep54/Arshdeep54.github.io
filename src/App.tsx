@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Github, Linkedin, Instagram, Mail, ExternalLink, 
-  Code2, Briefcase, User, ChevronDown, Menu, X, 
-  Terminal, Globe, Wrench, Send, MessageSquare 
+  Github, Linkedin, Instagram, Mail,  
+  Briefcase, ChevronDown, Menu, X, 
+ 
 } from 'lucide-react';
 import ProjectCard from './components/ProjectCard';
 import ContactForm from './components/ContactForm';
@@ -24,7 +24,6 @@ const staggerContainer = {
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSkillCategory, setActiveSkillCategory] = useState('programming');
 
   const projects = [
     {
@@ -65,7 +64,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.h1 
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text"
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
@@ -157,7 +156,7 @@ const Index = () => {
             variants={fadeIn}
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Hi, I'm <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text ">Arshdeep Singh</span>
+              Hi, I'm <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Arshdeep Singh</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Pursuing Btech in Mechanical Engineering at{" "}
@@ -272,7 +271,7 @@ const Index = () => {
           >
             <h2 className="text-4xl font-bold text-gray-900 inline-flex items-center">
               <Briefcase className="mr-3 text-indigo-600" /> 
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text ">Projects</span>
+              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent ">Projects</span>
             </h2>
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full"></div>
           </motion.div>
@@ -334,7 +333,7 @@ const Index = () => {
                   <a 
                     key={item} 
                     href={`#${item.toLowerCase()}`}
-                    className="hover:text-white text-indigo-600 transition-colors"
+                    className="hover:text-white text-indigo-100 transition-colors"
                   >
                     {item}
                   </a>

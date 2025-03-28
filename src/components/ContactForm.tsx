@@ -65,7 +65,7 @@ const ContactForm = () => {
         >
           <h2 className="text-4xl font-bold text-gray-900 inline-flex items-center justify-center">
             <MessageSquare className="mr-3 text-indigo-600" /> 
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text ">
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent ">
               Get in Touch
             </span>
           </h2>
@@ -178,7 +178,7 @@ const ContactForm = () => {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 font-medium shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors disabled:opacity-70"
+                    className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 font-medium text-white shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors disabled:opacity-70"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
