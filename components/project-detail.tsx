@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ExternalLink, Github, Lock } from "lucide-react"
 import type { Project } from "@/lib/data"
+import { useEffect } from "react"
 
 interface ProjectDetailProps {
   project: Project
@@ -10,6 +11,14 @@ interface ProjectDetailProps {
 }
 
 export default function ProjectDetail({ project, onClose }: ProjectDetailProps) {
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [])
+
   return (
     <AnimatePresence>
       <motion.div
@@ -25,23 +34,30 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           exit={{ y: "100%" }}
           transition={{ type: "spring", damping: 30 }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full max-w-2xl bg-card border-t border-border p-8 rounded-t-lg"
+          className="w-full max-w-2xl bg-card border-t border-border rounded-t-lg flex flex-col max-h-[90vh] md:max-h-[85vh]"
         >
-          <div className="flex items-start justify-between mb-6">
-            <div>
-              <h2 className="text-3xl font-light text-foreground mb-2">{project.name}</h2>
+          {/* Fixed Header */}
+          <div className="flex items-start justify-between p-6 pb-4 border-b border-border flex-shrink-0">
+            <div className="flex-1 pr-4">
+              <h2 className="text-2xl sm:text-3xl font-light text-foreground mb-2">{project.name}</h2>
               <div className="flex flex-wrap gap-2">
                 {project.category.map((cat) => (
-                  <span key={cat} className="text-accent text-sm px-2 py-1 bg-accent/10 rounded">{cat}</span>
+                  <span key={cat} className="text-accent text-xs sm:text-sm px-2 py-1 bg-accent/10 rounded">{cat}</span>
                 ))}
               </div>
             </div>
-            <button onClick={onClose} className="p-2 hover:bg-muted rounded transition-colors">
+            <button 
+              onClick={onClose} 
+              className="p-2 hover:bg-muted rounded transition-colors flex-shrink-0 sticky top-0"
+              aria-label="Close modal"
+            >
               <X size={20} />
             </button>
           </div>
 
-          <div className="space-y-6">
+          {/* Scrollable Content */}
+          <div className="overflow-y-auto flex-1 px-6 py-6">
+            <div className="space-y-6">
             <div>
               <h3 className="font-medium text-foreground mb-2">Overview</h3>
               <div className="text-muted-foreground leading-relaxed">
@@ -107,6 +123,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                 </a>
               )}
             </div>
+          </div>
           </div>
         </motion.div>
       </motion.div>
