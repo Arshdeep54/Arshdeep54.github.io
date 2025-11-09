@@ -8,14 +8,14 @@ export default function FeaturedProjects() {
   const featured = projects.slice(0, 3)
 
   return (
-    <section className="py-20 px-6 border-t border-border">
+    <section className="py-12 sm:py-20 px-4 sm:px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl font-light text-foreground mb-2">Featured Projects</h2>
-          <p className="text-muted-foreground">Highlighted work across professional, personal, and open-source</p>
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-light text-foreground mb-2">Featured Projects</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">Highlighted work across professional, personal, and open-source</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
           {featured.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -28,14 +28,18 @@ export default function FeaturedProjects() {
                 window.dispatchEvent(event)
               }}
             >
-              <div className="bg-card border border-border p-6 rounded-lg hover:border-accent transition-colors h-full">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-medium text-foreground group-hover:text-accent transition-colors">
+              <div className="bg-card border border-border p-4 sm:p-6 rounded-lg hover:border-accent transition-colors h-full">
+                <div className="flex items-start justify-between mb-3 gap-2">
+                  <h3 className="font-medium text-sm sm:text-base text-foreground group-hover:text-accent transition-colors">
                     {project.name}
                   </h3>
-                  <span className="text-xs px-2 py-1 bg-muted rounded text-muted-foreground">{project.category}</span>
+                  <div className="flex flex-wrap gap-1">
+                    {project.category.map((cat) => (
+                      <span key={cat} className="text-xs px-2 py-1 bg-muted rounded text-muted-foreground whitespace-nowrap">{cat}</span>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.slice(0, 3).map((t) => (
                     <span key={t} className="text-xs text-accent">

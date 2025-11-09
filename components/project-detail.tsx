@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ExternalLink, Github } from "lucide-react"
+import { X, ExternalLink, Github, Lock } from "lucide-react"
 import type { Project } from "@/lib/data"
 
 interface ProjectDetailProps {
@@ -30,7 +30,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           <div className="flex items-start justify-between mb-6">
             <div>
               <h2 className="text-3xl font-light text-foreground mb-2">{project.name}</h2>
-              <p className="text-accent text-sm">{project.category}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.category.map((cat) => (
+                  <span key={cat} className="text-accent text-sm px-2 py-1 bg-accent/10 rounded">{cat}</span>
+                ))}
+              </div>
             </div>
             <button onClick={onClose} className="p-2 hover:bg-muted rounded transition-colors">
               <X size={20} />
@@ -40,7 +44,22 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           <div className="space-y-6">
             <div>
               <h3 className="font-medium text-foreground mb-2">Overview</h3>
-              <p className="text-muted-foreground leading-relaxed">{project.longDescription}</p>
+              <div className="text-muted-foreground leading-relaxed">
+                {project.longDescription.includes("- ") || project.longDescription.includes("* ") ? (
+                  <ul className="list-disc list-inside space-y-2">
+                    {project.longDescription
+                      .split(/\n/)
+                      .filter((line) => line.trim().startsWith("- ") || line.trim().startsWith("* "))
+                      .map((line, idx) => (
+                        <li key={idx} className="ml-2">
+                          {line.replace(/^[-*]\s+/, "")}
+                        </li>
+                      ))}
+                  </ul>
+                ) : (
+                  <p>{project.longDescription}</p>
+                )}
+              </div>
             </div>
 
             <div>
@@ -60,7 +79,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             </div>
 
             <div className="flex gap-4 pt-4">
-              {project.github && (
+              {project.github ? (
                 <a
                   href={project.github}
                   target="_blank"
@@ -70,6 +89,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                   <Github size={18} />
                   GitHub
                 </a>
+              ) : (
+                <div className="flex items-center gap-2 px-4 py-2 border border-muted text-muted-foreground rounded cursor-default">
+                  <Lock size={18} />
+                  Private repo
+                </div>
               )}
               {project.link && (
                 <a
