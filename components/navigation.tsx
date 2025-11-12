@@ -8,13 +8,20 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    // Check system preference and localStorage on mount
-    const isDarkMode = localStorage.getItem("theme") === "dark"
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark")
-      setIsDark(true)
-    }
-  }, [])
+  const storedTheme = localStorage.getItem("theme")
+
+  const prefersDark = storedTheme ? storedTheme === "dark" : true
+
+  if (prefersDark) {
+    document.documentElement.classList.add("dark")
+    localStorage.setItem("theme", "dark")
+    setIsDark(true)
+  } else {
+    document.documentElement.classList.remove("dark")
+    localStorage.setItem("theme", "light")
+    setIsDark(false)
+  }
+}, [])
 
   const toggleDarkMode = () => {
     const newIsDark = !isDark
@@ -57,7 +64,7 @@ export default function Navigation() {
             Experience
           </Link>
           <a
-            href="https://drive.google.com/drive/folders/1lf9tlc-Yqi0cABihVkvecc711m3rgyYs"
+            href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -146,7 +153,7 @@ export default function Navigation() {
               Experience
             </Link>
             <a
-              href="https://drive.google.com/drive/folders/1lf9tlc-Yqi0cABihVkvecc711m3rgyYs"
+              href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"

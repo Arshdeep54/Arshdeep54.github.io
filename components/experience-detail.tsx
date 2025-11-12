@@ -54,7 +54,7 @@ export default function ExperienceDetail({ experience, onClose }: ExperienceDeta
 
           {/* Scrollable Content */}
           <div className="overflow-y-auto flex-1 px-6 py-6">
-            <div className="space-y-6">
+          <div className="space-y-6">
             <div>
               <h3 className="font-medium text-foreground mb-2">Description</h3>
               <p className="text-muted-foreground leading-relaxed">{experience.description}</p>
@@ -81,8 +81,8 @@ export default function ExperienceDetail({ experience, onClose }: ExperienceDeta
                   </span>
                 ))}
               </div>
+              </div>
             </div>
-          </div>
           </div>
         </motion.div>
       </motion.div>

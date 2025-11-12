@@ -57,7 +57,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
           {/* Scrollable Content */}
           <div className="overflow-y-auto flex-1 px-6 py-6">
-            <div className="space-y-6">
+          <div className="space-y-6">
             <div>
               <h3 className="font-medium text-foreground mb-2">Overview</h3>
               <div className="text-muted-foreground leading-relaxed">
@@ -123,7 +123,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                 </a>
               )}
             </div>
-          </div>
+            </div>
           </div>
         </motion.div>
       </motion.div>

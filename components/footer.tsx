@@ -42,7 +42,7 @@ export default function Footer() {
                 X
               </a>
               <a
-            href="https://drive.google.com/drive/folders/1lf9tlc-Yqi0cABihVkvecc711m3rgyYs"
+            href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="block text-muted-foreground hover:text-foreground transition-colors text-sm"

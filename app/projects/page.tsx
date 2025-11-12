@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                         {project.category.map((cat) => (
                           <span key={cat} className="text-xs px-2 py-1 bg-muted rounded text-muted-foreground whitespace-nowrap">
                             {cat}
-                          </span>
+                      </span>
                         ))}
                       </div>
                     </div>
