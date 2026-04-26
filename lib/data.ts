@@ -22,6 +22,18 @@ export interface Experience {
 
 export const projects: Project[] = [
   {
+    id: 'vortexdb',
+    name: 'VortexDB',
+    description:
+      'Lightweight vector database built from scratch in Rust for similarity search',
+    longDescription:
+      '- Vector database in Rust with pluggable indexers: Flat (exact), KD-Tree (low-dimensional), and HNSW for fast approximate nearest neighbors\n- Distance metrics include Euclidean, Manhattan, Hamming, and Cosine; storage backends include in-memory and RocksDB via a `StorageEngine` trait\n- Ships with an Axum HTTP API, a gRPC server, and a Ratatui TUI for inserts, search, and management',
+    category: ['Open Source'],
+    tech: ['Rust', 'Axum', 'gRPC', 'HNSW', 'RocksDB'],
+    date: 'Oct 2025 - Present',
+    github: 'https://github.com/sdslabs/VortexDB',
+  },
+  {
     id: 'watchdog',
     name: 'Watchdog',
     description: 'Server access management tool tracking administrative rights',
@@ -62,7 +74,7 @@ export const projects: Project[] = [
       '- SQL database built from scratch in Rust with a custom lexer, parser, storage engine, and terminal-style query interface\n- Implemented paged storage (pages/records) and modular architecture across parsing, execution, input handling, and storage\n- Roadmap includes B-Tree indexing, server mode, Dockerization, and extended SQL support',
     category: ['Personal'],
     tech: ['Rust', 'SQL', 'Database Engine'],
-    date: '2025 - Present',
+    date: 'Dec 2024 - Present',
     github: 'https://github.com/Arshdeep54/meridb',
   },
  
