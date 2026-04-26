@@ -1,4 +1,4 @@
-name: Deploy Vite React to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
@@ -31,4 +31,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  
-          folder: dist       
+          folder: out
