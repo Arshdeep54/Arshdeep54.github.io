@@ -321,19 +321,6 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: 'pldg-cohort-3',
-    role: 'Contributor',
-    company: 'Protocol Labs Dev Guild · Cohort 3',
-    description:
-      'Event Harvester for LabOS: pulled Luma and Cryptonomad listings through cleaning pipelines and synced structured output to Airtable.',
-    duration: 'Apr 2025 - Jun 2025',
-    highlights: [
-      'Event aggregator for Luma and Cryptonomad with comprehensive data cleaning and Airtable integration',
-      'Processes and normalizes event data from multiple sources into a unified format',
-    ],
-    skills: ['TypeScript', 'Airtable API', 'Data Processing'],
-  },
-  {
     id: 'pldg-cohort-4',
     role: 'Contributor',
     company: 'Protocol Labs Dev Guild · Cohort 4',
@@ -351,6 +338,19 @@ export const experiences: Experience[] = [
       'Python',
       'Discord Bot',
     ],
+  },
+  {
+    id: 'pldg-cohort-3',
+    role: 'Contributor',
+    company: 'Protocol Labs Dev Guild · Cohort 3',
+    description:
+      'Event Harvester for LabOS: pulled Luma and Cryptonomad listings through cleaning pipelines and synced structured output to Airtable.',
+    duration: 'Apr 2025 - Jun 2025',
+    highlights: [
+      'Event aggregator for Luma and Cryptonomad with comprehensive data cleaning and Airtable integration',
+      'Processes and normalizes event data from multiple sources into a unified format',
+    ],
+    skills: ['TypeScript', 'Airtable API', 'Data Processing'],
   },
   {
     id: 'inomy-dev',
