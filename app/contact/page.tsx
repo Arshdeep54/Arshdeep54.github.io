@@ -92,7 +92,7 @@ export default function ContactPage() {
                       LinkedIn
                     </a>
                     <a
-                      href="https://x.com/Arsh_bal_"
+                      href="https://x.com/Arshdeez_"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block text-sm sm:text-base text-accent hover:text-accent/80 transition-colors"
