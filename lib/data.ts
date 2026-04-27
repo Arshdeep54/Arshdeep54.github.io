@@ -151,20 +151,20 @@ export const projects: Project[] = [
     name: 'Event Harvester',
     description: 'Event aggregator for Luma and Cryptonomad',
     longDescription:
-      '- Built as part of Protocol Labs Dev Guild Cohort 3\n- Event aggregator for Luma and Cryptonomad with comprehensive data cleaning and Airtable integration\n- Processes and normalizes event data from multiple sources into a unified format',
+      '- Event aggregator for Luma and Cryptonomad with comprehensive data cleaning and Airtable integration\n- Processes and normalizes event data from multiple sources into a unified format\n- Shipped under Protocol Labs Dev Guild (Cohort 3)',
     category: ['Professional', 'Open Source'],
     tech: ['TypeScript', 'Airtable API', 'Data Processing'],
-    date: 'Apr 2025 - Oct 2025',
+    date: 'Apr 2025 - Jun 2025',
   },
   {
     id: 'ask-racha',
     name: 'Ask Racha',
     description: 'Docs Q&A with vector database retrieval',
     longDescription:
-      '- Built as part of Protocol Labs Dev Guild Cohort 4\n- Docs Q&A system that parses documentation and repositories, embedding them into Qdrant (vector DB) for low-latency retrieval\n- Built a lightweight retrieval API that enables semantic search across documentation using vector embeddings',
+      '- Docs Q&A system that parses documentation and repositories, embedding them into Qdrant (vector DB) for low-latency retrieval\n- Built a lightweight retrieval API that enables semantic search across documentation using vector embeddings\n- Shipped under Protocol Labs Dev Guild (Cohort 4)',
     category: ['Professional', 'Open Source'],
     tech: ['Vector DB', 'Qdrant', 'LlamaIndex', 'Python', 'Discord Bot'],
-    date: 'Apr 2025 - Oct 2025',
+    date: 'Jul 2025 - Sep 2025',
   },
   {
     id: 'lid-driven-cavity',
@@ -321,23 +321,37 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: 'pldg',
+    id: 'pldg-cohort-3',
     role: 'Contributor',
-    company: 'Protocol Labs Dev Guild',
-    description: 'Contributing to open-source projects in LabOS',
-    duration: 'Apr 2025 - Oct 2025',
+    company: 'Protocol Labs Dev Guild · Cohort 3',
+    description:
+      'Event Harvester for LabOS: pulled Luma and Cryptonomad listings through cleaning pipelines and synced structured output to Airtable.',
+    duration: 'Apr 2025 - Jun 2025',
     highlights: [
-      'Built Event Harvester — event aggregator for Luma and Cryptonomad with data cleaning and Airtable integration',
-      'Built Ask Racha — docs Q&A; parsed docs and repos, embedded into Qdrant (vector DB) for low-latency retrieval',
+      'Event aggregator for Luma and Cryptonomad with comprehensive data cleaning and Airtable integration',
+      'Processes and normalizes event data from multiple sources into a unified format',
+    ],
+    skills: ['TypeScript', 'Airtable API', 'Data Processing'],
+  },
+  {
+    id: 'pldg-cohort-4',
+    role: 'Contributor',
+    company: 'Protocol Labs Dev Guild · Cohort 4',
+    description:
+      'Ask Racha for Storacha: ingested docs and repos into Qdrant embeddings and shipped a small API for low-latency, semantic documentation search.',
+    duration: 'Aug 2025 - Oct 2025',
+    highlights: [
+      'Docs Q&A system that parses documentation and repositories, embedding them into Qdrant (vector DB) for low-latency retrieval',
+      'Built a lightweight retrieval API that enables semantic search across documentation using vector embeddings',
     ],
     skills: [
-      'Open Source',
-      'Data Processing',
-      'Vector Databases',
-      'API Development',
+      'Vector DB',
+      'Qdrant',
+      'LlamaIndex',
+      'Python',
+      'Discord Bot',
     ],
   },
-
   {
     id: 'inomy-dev',
     role: 'Full Stack Blockchain Developer',
