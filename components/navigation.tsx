@@ -153,7 +153,7 @@ export default function Navigation() {
               Experience
             </Link>
             <a
-              href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
+              href="https://drive.google.com/file/d/1LsdQcDmxNtX6D_XVm71WLDJx5agVOgGZ/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
