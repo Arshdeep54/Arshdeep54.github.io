@@ -15,50 +15,81 @@ export default function ExperiencePage() {
     <main className="min-h-screen bg-background">
       <Navigation />
 
-      <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
+      <section className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-4xl font-light mb-3 sm:mb-4 text-foreground">Experience</h1>
-            <p className="text-sm sm:text-base text-muted-foreground">Professional journey and roles</p>
+          <div className="mb-10 sm:mb-14">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">
+              {experiences.length} roles
+            </p>
+            <h1 className="font-serif text-4xl sm:text-5xl font-medium tracking-tight">
+              Experience
+            </h1>
+            <p className="mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
+              Professional roles, mentorships, and open-source communities.
+            </p>
           </div>
 
-          {/* Timeline */}
-          <div className="space-y-4 sm:space-y-6">
-            {experiences.map((exp, idx) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                onClick={() => setSelectedExp(exp)}
-                className="group cursor-pointer"
-              >
-                <div className="bg-card border border-border p-4 sm:p-6 rounded-lg hover:border-accent hover:shadow-sm transition-all">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
-                    <div>
-                      <h3 className="font-medium text-sm sm:text-base text-foreground group-hover:text-accent transition-colors">
-                        {exp.role}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-accent mt-1">{exp.company}</p>
-                    </div>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap">{exp.duration}</span>
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-border" />
+            <div className="space-y-10 pl-8 sm:pl-12">
+              {experiences.map((exp, idx) => (
+                <motion.button
+                  key={exp.id}
+                  type="button"
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                  onClick={() => setSelectedExp(exp)}
+                  className="group relative text-left w-full"
+                >
+                  <span className="absolute -left-8 sm:-left-12 top-1.5 h-2.5 w-2.5 rounded-full border border-accent bg-background group-hover:bg-accent transition-colors" />
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                    <h2 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
+                      {exp.role}
+                    </h2>
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                      {exp.duration}
+                    </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-4">{exp.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.slice(0, 3).map((skill) => (
-                      <span key={skill} className="text-xs text-accent px-2 py-1 bg-accent/5 rounded">
+                  <p className="mt-1 text-sm text-accent">
+                    {exp.link ? (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:underline underline-offset-2"
+                      >
+                        {exp.company}
+                      </a>
+                    ) : (
+                      exp.company
+                    )}
+                  </p>
+                  <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {exp.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {exp.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground"
+                      >
                         {skill}
                       </span>
                     ))}
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {selectedExp && <ExperienceDetail experience={selectedExp} onClose={() => setSelectedExp(null)} />}
+      {selectedExp && (
+        <ExperienceDetail experience={selectedExp} onClose={() => setSelectedExp(null)} />
+      )}
 
       <Footer />
     </main>

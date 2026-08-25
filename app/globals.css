@@ -4,79 +4,82 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Paper theme - whites and browns */
-  --background: #fafaf8;
-  --foreground: #1a1a18;
-  --card: #ffffff;
-  --card-foreground: #1a1a18;
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: #a89080;
-  --secondary-foreground: #ffffff;
-  --muted: #e8e8e6;
-  --muted-foreground: #6b6b69;
-  --accent: #8b7355;
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: #e0e0de;
-  --input: #f5f5f3;
-  --ring: #d4d4d2;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Warm paper. Ink. A single oxide accent. */
+  --background: oklch(0.965 0.008 85);
+  --foreground: oklch(0.23 0.02 55);
+  --card: oklch(0.985 0.004 85);
+  --card-foreground: oklch(0.23 0.02 55);
+  --popover: oklch(0.985 0.004 85);
+  --popover-foreground: oklch(0.23 0.02 55);
+  --primary: oklch(0.23 0.02 55);
+  --primary-foreground: oklch(0.97 0.008 85);
+  --secondary: oklch(0.9 0.015 55);
+  --secondary-foreground: oklch(0.3 0.02 55);
+  --muted: oklch(0.935 0.008 85);
+  --muted-foreground: oklch(0.52 0.018 55);
+  --accent: oklch(0.5 0.13 45);
+  --accent-foreground: oklch(0.98 0.01 85);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.885 0.009 85);
+  --input: oklch(0.94 0.008 85);
+  --ring: oklch(0.5 0.13 45);
+  --chart-1: oklch(0.5 0.13 45);
+  --chart-2: oklch(0.6 0.09 160);
+  --chart-3: oklch(0.55 0.12 250);
+  --chart-4: oklch(0.65 0.12 90);
+  --chart-5: oklch(0.58 0.16 350);
+  --radius: 0.25rem;
+  --sidebar: oklch(0.965 0.008 85);
+  --sidebar-foreground: oklch(0.23 0.02 55);
+  --sidebar-primary: oklch(0.23 0.02 55);
+  --sidebar-primary-foreground: oklch(0.97 0.008 85);
+  --sidebar-accent: oklch(0.9 0.015 55);
+  --sidebar-accent-foreground: oklch(0.3 0.02 55);
+  --sidebar-border: oklch(0.885 0.009 85);
+  --sidebar-ring: oklch(0.5 0.13 45);
 }
 
 .dark {
-  --background: #1a1a18;
-  --foreground: #fafaf8;
-  --card: #242422;
-  --card-foreground: #fafaf8;
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: #9a8a7a;
-  --secondary-foreground: #1a1a18;
-  --muted: #3a3a38;
-  --muted-foreground: #b0b0ae;
-  --accent: #b89968;
-  --accent-foreground: #1a1a18;
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: #2a2a28;
-  --input: #2a2a28;
-  --ring: #3a3a38;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --background: oklch(0.16 0.012 55);
+  --foreground: oklch(0.925 0.009 85);
+  --card: oklch(0.195 0.012 55);
+  --card-foreground: oklch(0.925 0.009 85);
+  --popover: oklch(0.195 0.012 55);
+  --popover-foreground: oklch(0.925 0.009 85);
+  --primary: oklch(0.925 0.009 85);
+  --primary-foreground: oklch(0.16 0.012 55);
+  --secondary: oklch(0.28 0.014 55);
+  --secondary-foreground: oklch(0.9 0.009 85);
+  --muted: oklch(0.245 0.012 55);
+  --muted-foreground: oklch(0.62 0.012 85);
+  --accent: oklch(0.73 0.125 50);
+  --accent-foreground: oklch(0.16 0.012 55);
+  --destructive: oklch(0.62 0.19 25);
+  --destructive-foreground: oklch(0.97 0.01 85);
+  --border: oklch(0.28 0.012 55);
+  --input: oklch(0.245 0.012 55);
+  --ring: oklch(0.73 0.125 50);
+  --chart-1: oklch(0.73 0.125 50);
+  --chart-2: oklch(0.68 0.09 160);
+  --chart-3: oklch(0.68 0.12 250);
+  --chart-4: oklch(0.72 0.12 90);
+  --chart-5: oklch(0.68 0.16 350);
+  --sidebar: oklch(0.18 0.012 55);
+  --sidebar-foreground: oklch(0.925 0.009 85);
+  --sidebar-primary: oklch(0.925 0.009 85);
+  --sidebar-primary-foreground: oklch(0.16 0.012 55);
+  --sidebar-accent: oklch(0.28 0.014 55);
+  --sidebar-accent-foreground: oklch(0.9 0.009 85);
+  --sidebar-border: oklch(0.28 0.012 55);
+  --sidebar-ring: oklch(0.73 0.125 50);
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -101,10 +104,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 1px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 2px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -117,12 +120,23 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
   }
   html {
-    font-size: 110%;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
+  ::selection {
+    background-color: color-mix(in oklab, var(--accent) 24%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }

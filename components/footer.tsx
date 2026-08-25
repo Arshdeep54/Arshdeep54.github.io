@@ -2,26 +2,30 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className='border-t border-border mt-12 sm:mt-20 py-8 sm:py-12 px-4 sm:px-6'>
+    <footer className='border-t border-border py-14 sm:py-16 px-4 sm:px-6'>
       <div className='max-w-6xl mx-auto'>
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12'>
+        <div className='grid sm:grid-cols-3 gap-10'>
           <div>
-            <h4 className='font-medium mb-4'>Contact</h4>
+            <p className='font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-4'>
+              Contact
+            </p>
             <a
               href='mailto:arsh9bl998@gmail.com'
-              className='text-muted-foreground hover:text-foreground transition-colors text-sm'
+              className='text-sm text-foreground hover:text-accent transition-colors'
             >
               arsh9bl998@gmail.com
             </a>
           </div>
           <div>
-            <h4 className='font-medium mb-4'>Social</h4>
+            <p className='font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-4'>
+              Elsewhere
+            </p>
             <div className='space-y-2'>
               <a
                 href='https://github.com/Arshdeep54'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
                 GitHub
               </a>
@@ -29,7 +33,7 @@ export default function Footer() {
                 href='https://linkedin.com/in/arshdeep-singh-326815292'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
                 LinkedIn
               </a>
@@ -37,46 +41,43 @@ export default function Footer() {
                 href='https://x.com/arshdeez_'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
                 X
               </a>
-              <a
-            href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-muted-foreground hover:text-foreground transition-colors text-sm"
-          >
-            Resume
-          </a>
             </div>
           </div>
           <div>
-            <h4 className='font-medium mb-4'>Pages</h4>
+            <p className='font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-4'>
+              Site
+            </p>
             <div className='space-y-2'>
               <Link
-                href='/contact'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
-              >
-                Contact
-              </Link>
-              <Link
                 href='/projects'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
                 Projects
               </Link>
               <Link
                 href='/experience'
-                className='block text-muted-foreground hover:text-foreground transition-colors text-sm'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
                 Experience
+              </Link>
+              <Link
+                href='/contact'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
+              >
+                Contact
               </Link>
             </div>
           </div>
         </div>
-        <div className='text-center text-xs text-muted-foreground pt-6 sm:pt-8 border-t border-border'>
-          <p>© 2025 Arshdeep Singh. Crafted with attention to detail.</p>
+        <div className='mt-12 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-3'>
+          <p className='text-xs text-muted-foreground'>© 2025 Arshdeep Singh</p>
+          <p className='font-mono text-[11px] uppercase tracking-widest text-muted-foreground'>
+            Databases · Cryptography · Systems
+          </p>
         </div>
       </div>
     </footer>

@@ -1,173 +1,127 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import { Menu, Moon, Sun, X } from "lucide-react"
+
+const links = [
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/contact", label: "Contact" },
+]
 
 export default function Navigation() {
-  const [isDark, setIsDark] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const [isDark, setIsDark] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-  const storedTheme = localStorage.getItem("theme")
-
-  const prefersDark = storedTheme ? storedTheme === "dark" : true
-
-  if (prefersDark) {
-    document.documentElement.classList.add("dark")
-    localStorage.setItem("theme", "dark")
-    setIsDark(true)
-  } else {
-    document.documentElement.classList.remove("dark")
-    localStorage.setItem("theme", "light")
-    setIsDark(false)
-  }
-}, [])
+    const storedTheme = localStorage.getItem("theme")
+    const prefersDark = storedTheme ? storedTheme === "dark" : true
+    setIsDark(prefersDark)
+    document.documentElement.classList.toggle("dark", prefersDark)
+  }, [])
 
   const toggleDarkMode = () => {
-    const newIsDark = !isDark
-    setIsDark(newIsDark)
-
-    if (newIsDark) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("theme", "light")
-    }
+    const next = !isDark
+    setIsDark(next)
+    document.documentElement.classList.toggle("dark", next)
+    localStorage.setItem("theme", next ? "dark" : "light")
   }
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href)
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm z-40 border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        <Link 
-          href="/" 
-          className="text-base sm:text-lg font-medium text-foreground hover:text-accent transition-colors"
-          onClick={closeMobileMenu}
+    <nav className="fixed top-0 w-full bg-background/85 backdrop-blur-sm z-40 border-b border-border">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-serif text-lg sm:text-xl tracking-tight text-foreground hover:text-accent transition-colors"
         >
           Arshdeep Singh
         </Link>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Projects
-          </Link>
-          <Link href="/experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Experience
-          </Link>
+
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-6">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative font-mono text-xs uppercase tracking-widest transition-colors ${
+                  isActive(link.href)
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+                {isActive(link.href) && (
+                  <span className="absolute -bottom-1.5 left-0 h-px w-full bg-accent" />
+                )}
+              </Link>
+            ))}
+          </div>
+
           <a
-            href="https://drive.google.com/file/d/1J4V8Cj1YJBsvFojCFHO8-FNnzywjsaLq/view?usp=sharing"
+            href="https://drive.google.com/file/d/1LsdQcDmxNtX6D_XVm71WLDJx5agVOgGZ/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
           >
             Resume
           </a>
-          <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Contact
-          </Link>
+
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            aria-label="Toggle dark mode"
+            className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
           >
-            {isDark ? (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm5.657-9.193a1 1 0 00-1.414 0l-.707.707A1 1 0 005.05 6.464l.707-.707a1 1 0 001.414-1.414zM5 8a1 1 0 100-2H4a1 1 0 100 2h1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            aria-label="Toggle dark mode"
+            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
           >
-            {isDark ? (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm5.657-9.193a1 1 0 00-1.414 0l-.707.707A1 1 0 005.05 6.464l.707-.707a1 1 0 001.414-1.414zM5 8a1 1 0 100-2H4a1 1 0 100 2h1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button
-            onClick={toggleMobileMenu}
-            className="p-2 rounded-lg bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            onClick={() => setIsMenuOpen((v) => !v)}
+            className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      {isMenuOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-sm">
-          <div className="px-4 py-4 space-y-3">
-            <Link
-              href="/projects"
-              className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={closeMobileMenu}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/experience"
-              className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={closeMobileMenu}
-            >
-              Experience
-            </Link>
+          <div className="px-4 py-6 space-y-5">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block font-serif text-2xl text-foreground hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href="https://drive.google.com/file/d/1LsdQcDmxNtX6D_XVm71WLDJx5agVOgGZ/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={closeMobileMenu}
+              onClick={() => setIsMenuOpen(false)}
+              className="block font-serif text-2xl text-muted-foreground hover:text-accent transition-colors"
             >
               Resume
             </a>
-            <Link
-              href="/contact"
-              className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={closeMobileMenu}
-            >
-              Contact
-            </Link>
           </div>
         </div>
       )}

@@ -2,64 +2,81 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
 
 export default function Hero() {
   return (
-    <section className="pt-20 sm:pt-32 pb-10 sm:pb-20 px-4 sm:px-6">
+    <section className="pt-28 sm:pt-40 pb-16 sm:pb-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center md:justify-between"
+          transition={{ duration: 0.6 }}
+          className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-5"
         >
-          {/* Profile Picture - Centered on mobile, smaller size */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 mx-auto md:mx-0 order-1 md:order-2"
-          >
-            <Image
-              src="/memoji.webp"
-              alt="Arshdeep Singh"
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 320px"
-            />
-          </motion.div>
+          Developer · IIT Roorkee
+        </motion.p>
 
-          {/* Text Content */}
-          <div className="space-y-4 sm:space-y-6 md:space-y-8 order-2 md:order-1 text-center md:text-left">
-            <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-2 sm:mb-3 md:mb-4 text-foreground">Arshdeep Singh</h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light italic">Building systems that matter</p>
-            </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="font-serif text-[clamp(4rem,12vw,11.5rem)] font-medium leading-[0.9] tracking-tight text-balance"
+        >
+          Arshdeep
+          <br />
+          Singh
+        </motion.h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
-              Pre-final year undergraduate at IIT Roorkee with an interest in databases, cryptography, and web
-              development. Passionate about open-source software, low-level internals, and exploring blockchain and
-              DevOps.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center md:justify-start">
-              <Link
-                href="/projects"
-                className="px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base text-center border border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                View Projects
-              </Link>
-              <Link 
-                href="/experience" 
-                className="px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base text-center text-accent hover:text-accent/80 transition-colors"
-              >
-                Experience
-              </Link>
-            </div>
-          </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="mt-10 sm:mt-14 flex items-center gap-6"
+        >
+          <motion.span
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-px flex-1 origin-left bg-border"
+          />
+          <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            N.&deg; 01 &mdash; Roorkee, IN
+          </span>
         </motion.div>
+
+        <div className="mt-8 sm:mt-10 max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
+          >
+            I build low-level systems with a database instinct: storage engines,
+            indexers, and the occasional smart contract. Pre-final year
+            undergraduate interested in databases, cryptography, and open-source
+            internals.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-8 flex flex-wrap gap-x-6 gap-y-3"
+          >
+            <Link
+              href="/projects"
+              className="font-mono text-xs uppercase tracking-widest text-accent-foreground bg-accent px-5 py-3 hover:opacity-90 transition-opacity"
+            >
+              View projects
+            </Link>
+            <Link
+              href="/experience"
+              className="font-mono text-xs uppercase tracking-widest text-foreground border border-border px-5 py-3 hover:border-accent transition-colors"
+            >
+              Experience
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

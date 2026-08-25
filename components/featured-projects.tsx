@@ -1,64 +1,76 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import ProjectDetail from "@/components/project-detail"
 import { projects } from "@/lib/data"
+import type { Project } from "@/lib/data"
 
 export default function FeaturedProjects() {
   const featured = projects.slice(0, 3)
+  const [selected, setSelected] = useState<Project | null>(null)
 
   return (
-    <section className="py-12 sm:py-20 px-4 sm:px-6 border-t border-border">
+    <>
+    <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-light text-foreground mb-2">Featured Projects</h2>
-          <p className="text-sm sm:text-base text-muted-foreground">Highlighted work across professional, personal, and open-source</p>
+        <div className="mb-10 sm:mb-14 flex items-end justify-between gap-6">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">
+              Selected work
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight">
+              Projects
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors"
+          >
+            All projects →
+          </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+        <div className="divide-y divide-border border-y border-border">
           {featured.map((project, idx) => (
-            <motion.div
+            <motion.button
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              type="button"
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="group cursor-pointer"
-              onClick={() => {
-                const event = new CustomEvent("openProjectDetail", { detail: project })
-                window.dispatchEvent(event)
-              }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.06 }}
+              onClick={() => setSelected(project)}
+              className="group grid grid-cols-[auto_1fr_auto] gap-4 sm:gap-8 items-baseline py-6 sm:py-8 text-left w-full hover:bg-card/50 transition-colors px-1 -mx-1"
             >
-              <div className="bg-card border border-border p-4 sm:p-6 rounded-lg hover:border-accent transition-colors h-full">
-                <div className="flex items-start justify-between mb-3 gap-2">
-                  <h3 className="font-medium text-sm sm:text-base text-foreground group-hover:text-accent transition-colors">
+              <span className="font-mono text-xs text-muted-foreground tabular-nums">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
                     {project.name}
                   </h3>
-                  <div className="flex flex-wrap gap-1">
-                    {project.category.map((cat) => (
-                      <span key={cat} className="text-xs px-2 py-1 bg-muted rounded text-muted-foreground whitespace-nowrap">{cat}</span>
-                    ))}
-                  </div>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    {project.date}
+                  </span>
                 </div>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map((t) => (
-                    <span key={t} className="text-xs text-accent">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
+                  {project.description}
+                </p>
               </div>
-            </motion.div>
+              <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-accent">
+                →
+              </span>
+            </motion.button>
           ))}
         </div>
-
-        <Link
-          href="/projects"
-          className="text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-2"
-        >
-          View all projects →
-        </Link>
       </div>
     </section>
+    {selected && (
+      <ProjectDetail project={selected} onClose={() => setSelected(null)} />
+    )}
+    </>
   )
 }

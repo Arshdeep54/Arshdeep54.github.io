@@ -18,6 +18,7 @@ export interface Experience {
   duration: string;
   highlights: string[];
   skills: string[];
+  link?: string;
 }
 
 export const projects: Project[] = [
@@ -302,6 +303,30 @@ export const projects: Project[] = [
 ];
 
 export const experiences: Experience[] = [
+  {
+    id: 'tal-boss-software-engineer',
+    role: 'Software Engineer',
+    company: 'Tal Boss (by Grapevine)',
+    link: 'https://tal.club',
+    description:
+      'Building job discovery and candidate matching services in Bangalore, India — from LinkedIn onboarding to async job queues and vector indexing.',
+    duration: 'May 2026 - Aug 2026',
+    highlights: [
+      'Contributed to core job discovery and candidate matching services; integrated LinkedIn auth, profile extraction, and verification for candidate onboarding workflows; experimented with Tinker Labs models for matching optimization',
+      'Worked on candidate and job profile indexing in Qdrant; explored cloud storage migration from Azure Blob to AWS S3 for cost optimization and evaluated schema improvements',
+      'Contributed to asynchronous job queue infrastructure using BullMQ, implemented multiple worker handlers for background processing, integrated observability stack (Signoz) for real-time debugging, and worked with GetStream for event handling and messaging',
+    ],
+    skills: [
+      'TypeScript',
+      'Node.js',
+      'Qdrant',
+      'BullMQ',
+      'AWS S3',
+      'Azure Blob',
+      'Signoz',
+      'GetStream',
+    ],
+  },
   {
     id: 'lfx-wasmedge',
     role: 'LFX Mentee',
