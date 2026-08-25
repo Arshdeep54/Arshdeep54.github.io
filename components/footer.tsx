@@ -74,9 +74,9 @@ export default function Footer() {
           </div>
         </div>
         <div className='mt-12 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-3'>
-          <p className='text-xs text-muted-foreground'>© 2025 Arshdeep Singh</p>
+          <p className='text-xs text-muted-foreground'>© {new Date().getFullYear()} Arshdeep Singh</p>
           <p className='font-mono text-[11px] uppercase tracking-widest text-muted-foreground'>
-            Databases · Cryptography · Systems
+            Databases · Rust · Systems
           </p>
         </div>
       </div>
