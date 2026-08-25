@@ -10,10 +10,10 @@ export default function Footer() {
               Contact
             </p>
             <a
-              href='mailto:arsh9bl998@gmail.com'
+              href='mailto:hey@hiesenbug.dev'
               className='text-sm text-foreground hover:text-accent transition-colors'
             >
-              arsh9bl998@gmail.com
+              hey@hiesenbug.dev
             </a>
           </div>
           <div>
@@ -30,7 +30,7 @@ export default function Footer() {
                 GitHub
               </a>
               <a
-                href='https://linkedin.com/in/arshdeep-singh-326815292'
+                href='https://linkedin.com/in/arshdeep54'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='block text-sm text-muted-foreground hover:text-accent transition-colors'

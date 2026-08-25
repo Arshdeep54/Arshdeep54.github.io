@@ -7,6 +7,9 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { motion } from "framer-motion"
 
+// Public submission key from web3forms.com — safe to expose client-side.
+const WEB3FORMS_ACCESS_KEY = "1610fd0b-2c6c-416b-9efe-2da4ee038551"
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "", honeypot: "" })
   const [submitted, setSubmitted] = useState(false)
@@ -22,21 +25,36 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
+
+    if (formData.honeypot) {
+      // Silent no-op for bots.
+      setSubmitted(true)
+      setFormData({ name: "", email: "", message: "", honeypot: "" })
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Portfolio contact from ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       })
 
       const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message")
+      if (!data.success) {
+        throw new Error(data.message || "Failed to send message")
       }
 
       setSubmitted(true)
@@ -82,10 +100,10 @@ export default function ContactPage() {
                     Email
                   </p>
                   <a
-                    href="mailto:arsh9bl998@gmail.com"
+                    href="mailto:hey@hiesenbug.dev"
                     className="text-base text-foreground hover:text-accent transition-colors break-all"
                   >
-                    arsh9bl998@gmail.com
+                    hey@hiesenbug.dev
                   </a>
                 </div>
                 <div>
@@ -102,7 +120,7 @@ export default function ContactPage() {
                       GitHub
                     </a>
                     <a
-                      href="https://linkedin.com/in/arshdeep-singh-326815292"
+                      href="https://linkedin.com/in/arshdeep54"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block text-base text-muted-foreground hover:text-accent transition-colors"
