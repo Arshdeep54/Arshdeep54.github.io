@@ -52,9 +52,8 @@ export default function Hero() {
             className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
           >
             I build low-level systems with a database instinct: storage engines,
-            indexers, and the occasional smart contract. Pre-final year
-            undergraduate interested in databases, cryptography, and open-source
-            internals.
+            indexers, and backend services. Final-year undergraduate
+            interested in databases, cryptography, and open-source internals.
           </motion.p>
 
           <motion.div
