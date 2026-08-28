@@ -23,6 +23,19 @@ export interface Experience {
 
 export const projects: Project[] = [
   {
+    id: 'huell',
+    name: 'Huell',
+    description:
+      'Self-hostable docs platform: connect a GitHub repo and get a searchable docs site on your own server',
+    longDescription:
+      '- Self-hostable docs platform that connects a GitHub repo (or accepts a docs.zip upload) and builds a searchable, publishable docs site on your own server\n- Runs as one deployable instance per organization on a single small VM: Caddy reverse proxy, Next.js dashboard, build worker, and static output, with SQLite for metadata\n- Docs sites built with Astro Starlight (sidebar nav, search, dark mode, LaTeX); ships with `huellup`, a companion CLI and MCP server for scaffolding and validating docs',
+    category: ['Personal'],
+    tech: ['Next.js', 'Docker Compose', 'Astro Starlight', 'Caddy', 'SQLite', 'GitHub Apps'],
+    date: 'Aug 2026 - Present',
+    link: 'https://huell.hiesenbug.dev',
+    github: 'https://github.com/Arshdeep54/huell',
+  },
+  {
     id: 'vortexdb',
     name: 'VortexDB',
     description:
