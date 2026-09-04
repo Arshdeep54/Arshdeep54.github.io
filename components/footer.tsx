@@ -65,6 +65,12 @@ export default function Footer() {
                 Experience
               </Link>
               <Link
+                href='/blogs'
+                className='block text-sm text-muted-foreground hover:text-accent transition-colors'
+              >
+                Blogs
+              </Link>
+              <Link
                 href='/contact'
                 className='block text-sm text-muted-foreground hover:text-accent transition-colors'
               >
