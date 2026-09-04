@@ -423,3 +423,57 @@ export const experiences: Experience[] = [
     ],
   },
 ];
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  externalUrl?: string;
+  source?: string;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'hnsw-index-part-1',
+    title: 'HNSW, Part 1: The Mental Model',
+    description:
+      'How HNSW, the vector index behind fast similarity search, actually works, before writing a line of code.',
+    date: 'Mar 2026',
+    readingTime: '',
+    tags: ['Vector Databases', 'HNSW', 'Rust'],
+    externalUrl: 'https://blog.sdslabs.co/2026/03/hnsw-index',
+    source: 'SDSLabs Blog',
+  },
+  {
+    slug: 'hnsw-index-part-2',
+    title: 'HNSW, Part 2: The Rust Implementation',
+    description:
+      'Building HNSW in Rust: the part 1 mental model turned into pluggable indexer code.',
+    date: 'Mar 2026',
+    readingTime: '',
+    tags: ['Vector Databases', 'HNSW', 'Rust'],
+    externalUrl: 'https://blog.sdslabs.co/2026/03/hnsw-indexp2',
+    source: 'SDSLabs Blog',
+  },
+  {
+    slug: 'two-parsers-one-stream',
+    title: 'Two Parsers, One Stream',
+    description:
+      'How a reverse proxy and a backend can disagree about where a request ends, and what an attacker gets when they do.',
+    date: 'Aug 2026',
+    readingTime: '6 min',
+    tags: ['Web Security', 'Networking'],
+  },
+  {
+    slug: 'ledger-pattern',
+    title: 'The Ledger Pattern',
+    description:
+      'Idempotency keys and hash-chained append-only logs, and why a bare hash chain is not enough once an AI agent holds write access.',
+    date: 'Sep 2026',
+    readingTime: '13 min',
+    tags: ['Databases', 'AI Agents', 'Security'],
+  },
+];
