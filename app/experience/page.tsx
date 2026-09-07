@@ -1,17 +1,11 @@
 "use client"
 
-import { useState } from "react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import ExperienceDetail from "@/components/experience-detail"
-import { Row, Section } from "@/components/list-row"
 import { experienceIcon } from "@/lib/icons"
 import { experiences } from "@/lib/data"
-import type { Experience } from "@/lib/data"
 
 export default function ExperiencePage() {
-  const [selected, setSelected] = useState<Experience | null>(null)
-
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -22,25 +16,62 @@ export default function ExperiencePage() {
           Professional roles, mentorships, and open-source communities.
         </p>
 
-        <Section label={`${experiences.length} roles`}>
-          {experiences.map((exp) => (
-            <Row
-              key={exp.id}
-              when={exp.duration.match(/\d{4}/)?.[0] ?? ""}
-              title={exp.role}
-              icon={experienceIcon(exp.id)}
-              meta={exp.company}
-              description={exp.description}
-              tags={exp.skills}
-              onClick={() => setSelected(exp)}
-            />
-          ))}
-        </Section>
-      </div>
+        <div className="mt-10 border-t border-border">
+          {experiences.map((exp) => {
+            const Icon = experienceIcon(exp.id)
+            return (
+              <section
+                key={exp.id}
+                className="py-6 border-b border-border last:border-0"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-border bg-muted/60 text-muted-foreground">
+                    <Icon size={13} />
+                  </span>
+                  <h2 className="text-sm text-foreground">{exp.role}</h2>
+                </div>
 
-      {selected && (
-        <ExperienceDetail experience={selected} onClose={() => setSelected(null)} />
-      )}
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {exp.link ? (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-accent transition-colors"
+                    >
+                      {exp.company}
+                    </a>
+                  ) : (
+                    <span className="text-foreground">{exp.company}</span>
+                  )}{" "}
+                  · {exp.duration}
+                </p>
+
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                  {exp.description}
+                </p>
+
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground leading-relaxed list-disc pl-4 marker:text-muted-foreground/40">
+                  {exp.highlights.map((highlight, idx) => (
+                    <li key={idx}>{highlight}</li>
+                  ))}
+                </ul>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {exp.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-xs text-muted-foreground px-2.5 py-1 border border-border"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )
+          })}
+        </div>
+      </div>
 
       <Footer />
     </main>
