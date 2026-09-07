@@ -75,20 +75,20 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      <div className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+      <div className="pt-28 sm:pt-32 pb-20 px-6">
+        <div className="max-w-[46rem] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">
+            <p className="text-xs text-muted-foreground mb-2">
               Contact
             </p>
-            <h1 className="font-serif text-4xl sm:text-5xl font-medium tracking-tight">
+            <h1 className="text-lg text-foreground">
               Get in touch
             </h1>
-            <p className="mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
+            <p className="mt-3 max-w-xl text-sm text-muted-foreground leading-relaxed">
               Have a question or want to collaborate? I usually reply within a
               day.
             </p>
@@ -96,18 +96,18 @@ export default function ContactPage() {
             <div className="mt-12 grid md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16">
               <div className="space-y-8">
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-2">
+                  <p className="text-xs text-muted-foreground mb-2">
                     Email
                   </p>
                   <a
                     href="mailto:hey@hiesenbug.dev"
-                    className="text-base text-foreground hover:text-accent transition-colors break-all"
+                    className="text-sm text-foreground hover:text-accent transition-colors break-all"
                   >
                     hey@hiesenbug.dev
                   </a>
                 </div>
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">
+                  <p className="text-xs text-muted-foreground mb-3">
                     Elsewhere
                   </p>
                   <div className="space-y-2">
@@ -115,7 +115,7 @@ export default function ContactPage() {
                       href="https://github.com/Arshdeep54"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-base text-muted-foreground hover:text-accent transition-colors"
+                      className="block text-sm text-muted-foreground hover:text-accent transition-colors"
                     >
                       GitHub
                     </a>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                       href="https://linkedin.com/in/arshdeep54"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-base text-muted-foreground hover:text-accent transition-colors"
+                      className="block text-sm text-muted-foreground hover:text-accent transition-colors"
                     >
                       LinkedIn
                     </a>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                       href="https://x.com/arshdeez_"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-base text-muted-foreground hover:text-accent transition-colors"
+                      className="block text-sm text-muted-foreground hover:text-accent transition-colors"
                     >
                       X
                     </a>
@@ -220,7 +220,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="w-full sm:w-auto px-6 py-3 font-mono text-xs uppercase tracking-widest bg-accent text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-6 py-3 text-sm bg-accent text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending..." : submitted ? "Sent" : "Send message"}
                 </button>

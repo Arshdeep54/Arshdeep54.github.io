@@ -8,12 +8,9 @@ export function Lede({ children }: { children: ReactNode }) {
   )
 }
 
-export function H2({ num, children }: { num: string; children: ReactNode }) {
+export function H2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mt-14 mb-4 font-serif text-2xl sm:text-3xl font-medium tracking-tight text-balance">
-      <span className="block font-mono text-xs text-accent tracking-widest mb-2">
-        {num}
-      </span>
+    <h2 className="mt-14 mb-4 text-xl sm:text-2xl font-medium tracking-tight text-balance">
       {children}
     </h2>
   )
@@ -29,7 +26,7 @@ export function P({ children }: { children: ReactNode }) {
 
 export function Pull({ children }: { children: ReactNode }) {
   return (
-    <p className="font-serif text-xl sm:text-2xl font-medium border-l-2 border-accent pl-5 my-8 max-w-xl text-foreground">
+    <p className="text-base sm:text-lg border-l-2 border-border pl-5 my-8 max-w-xl text-foreground">
       {children}
     </p>
   )
@@ -44,11 +41,11 @@ export function Note({
   tone?: "accent" | "chart-3"
   children: ReactNode
 }) {
-  const borderColor = tone === "accent" ? "border-accent" : "border-[var(--chart-3)]"
-  const labelColor = tone === "accent" ? "text-accent" : "text-[var(--chart-3)]"
+  const borderColor = tone === "accent" ? "border-foreground/60" : "border-foreground/25"
+  const labelColor = tone === "accent" ? "text-foreground" : "text-muted-foreground"
   return (
     <div className={`flex gap-4 border-l-2 ${borderColor} bg-card rounded-sm p-4 my-6`}>
-      <span className={`font-mono text-[11px] uppercase tracking-widest ${labelColor} whitespace-nowrap pt-0.5`}>
+      <span className={`text-xs ${labelColor} whitespace-nowrap pt-0.5`}>
         {label}
       </span>
       <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
@@ -81,8 +78,8 @@ export function CodePanel({
   children: ReactNode
 }) {
   return (
-    <div className="my-6 rounded bg-foreground text-background p-5 font-mono text-[12.5px] sm:text-sm leading-relaxed overflow-x-auto">
-      <div className="mb-3 font-mono text-[10px] uppercase tracking-widest opacity-60">
+    <div className="my-6 rounded border border-border bg-card text-foreground p-5 font-mono text-[12.5px] sm:text-sm leading-relaxed overflow-x-auto">
+      <div className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         {title}
       </div>
       <pre className="whitespace-pre">{children}</pre>
@@ -105,7 +102,7 @@ export function Table({
             {head.map((h) => (
               <th
                 key={h}
-                className="text-left font-mono text-[11px] uppercase tracking-widest text-muted-foreground bg-card border border-border px-3 py-2"
+                className="text-left text-xs text-muted-foreground bg-card border border-border px-3 py-2"
               >
                 {h}
               </th>
@@ -148,7 +145,7 @@ export function Sources({
 }) {
   return (
     <div className="mt-16 pt-6 border-t border-border">
-      <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-4">
+      <p className="text-xs text-muted-foreground mb-4">
         {heading}
       </p>
       <ol className="space-y-2 list-decimal list-inside">

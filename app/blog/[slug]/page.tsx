@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import BlogHeader from "@/components/blog-header"
+import ToTop from "@/components/to-top"
 import { blogPosts } from "@/lib/data"
 import TwoParsersOneStream from "@/components/blog-posts/two-parsers-one-stream"
 import LedgerPattern from "@/components/blog-posts/ledger-pattern"
@@ -41,6 +42,7 @@ export default async function BlogPostPage({
         </div>
       </article>
 
+      <ToTop />
       <Footer />
     </main>
   )

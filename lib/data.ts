@@ -4,6 +4,8 @@ export interface Project {
   description: string;
   longDescription: string;
   category: ('Professional' | 'Personal' | 'Open Source')[];
+  /** Three or four words, shown next to the name in list views. */
+  tagline?: string;
   tech: string[];
   date: string;
   link?: string;
@@ -30,6 +32,7 @@ export const projects: Project[] = [
     longDescription:
       '- Self-hostable docs platform that connects a GitHub repo (or accepts a docs.zip upload) and builds a searchable, publishable docs site on your own server\n- Runs as one deployable instance per organization on a single small VM: Caddy reverse proxy, Next.js dashboard, build worker, and static output, with SQLite for metadata\n- Docs sites built with Astro Starlight (sidebar nav, search, dark mode, LaTeX); ships with `huellup`, a companion CLI and MCP server for scaffolding and validating docs',
     category: ['Personal'],
+    tagline: 'Self-hosted docs platform',
     tech: ['Next.js', 'Docker Compose', 'Astro Starlight', 'Caddy', 'SQLite', 'GitHub Apps'],
     date: 'Aug 2026 - Present',
     link: 'https://huell.hiesenbug.dev',
@@ -43,6 +46,7 @@ export const projects: Project[] = [
     longDescription:
       '- Vector database in Rust with pluggable indexers: Flat (exact), KD-Tree (low-dimensional), and HNSW for fast approximate nearest neighbors\n- Distance metrics include Euclidean, Manhattan, Hamming, and Cosine; storage backends include in-memory and RocksDB via a `StorageEngine` trait\n- Ships with an Axum HTTP API, a gRPC server, and a Ratatui TUI for inserts, search, and management',
     category: ['Open Source'],
+    tagline: 'Vector database in Rust',
     tech: ['Rust', 'Axum', 'gRPC', 'HNSW', 'RocksDB'],
     date: 'Oct 2025 - Present',
     github: 'https://github.com/sdslabs/VortexDB',
@@ -54,6 +58,7 @@ export const projects: Project[] = [
     longDescription:
       '- Written in Rust, a personalized server access management tool that tracks all administrative rights attempts (like sudo and su) on the server via SSH\n- Allows/denies access based on user public keys and logs all activity in Slack messages\n- Provides easy granting/revoking access to 4 servers for 50+ SDSLabs team members through pull requests',
     category: ['Open Source'],
+    tagline: 'Server access control',
     tech: ['Rust', 'SSH', 'Linux', 'Slack API'],
     date: 'Dec 2024 - Present',
     github: 'https://github.com/sdslabs/watchdog',
@@ -65,6 +70,7 @@ export const projects: Project[] = [
     longDescription:
       '- A lightweight, high-performance connection pooler for PostgreSQL designed for low-latency environments and efficient resource usage\n- Added Docker support for containerized workflows\n- Integrated FreeBSD support into the CI pipeline to expand to 3 platforms\n- Implemented load-save approach for struct backup flow, reducing 7+ functions to 2',
     category: ['Open Source'],
+    tagline: 'PostgreSQL connection pooler',
     tech: ['C', 'PostgreSQL', 'Docker', 'CI/CD'],
     date: 'Mar 2025 - Jul 2025',
     github: 'https://github.com/pgmoneta/pgmoneta',
@@ -76,6 +82,7 @@ export const projects: Project[] = [
     longDescription:
       '- Implemented core features for cross-platform WasmEdge installer including remove, versioning, and plugin management\n- Added hardware/system detection for optimal runtime configuration (CPU features, GPU backends: CUDA/ROCm/OpenCL) with validation and tests\n- Strengthened reliability with checksum verification, documentation, and CI across Linux, macOS, and Windows',
     category: ['Professional', 'Open Source'],
+    tagline: 'Cross-platform installer',
     tech: ['Rust', 'Cross-platform', 'CI/CD', 'Hardware Detection'],
     date: 'Sep 2025 - Nov 2025',
     github: 'https://github.com/Arshdeep54',
@@ -87,6 +94,7 @@ export const projects: Project[] = [
     longDescription:
       '- SQL database built from scratch in Rust with a custom lexer, parser, storage engine, and terminal-style query interface\n- Implemented paged storage (pages/records) and modular architecture across parsing, execution, input handling, and storage\n- Roadmap includes B-Tree indexing, server mode, Dockerization, and extended SQL support',
     category: ['Personal'],
+    tagline: 'SQL engine from scratch',
     tech: ['Rust', 'SQL', 'Database Engine'],
     date: 'Dec 2024 - Present',
     github: 'https://github.com/Arshdeep54/meridb',
@@ -99,6 +107,7 @@ export const projects: Project[] = [
     longDescription:
       '- Built a distributed key–value store prototype in Rust with embedded LSM-based storage engine (memtable + SSTables) for write-optimized persistence\n- Implemented eventually consistent replication using state-based CRDTs (Grow-only Set, Replicated Growable Array) with deterministic merge operations\n- Designed Kubernetes-native architecture with gRPC communication, leader election via Kubernetes Lease, and a load balancer (zynk-lb) for scalable deployment',
     category: ['Personal'],
+    tagline: 'CRDT key-value store',
     tech: ['Rust', 'gRPC', 'Kubernetes', 'CRDTs', 'LSM'],
     date: 'Nov 2025',
     github: 'https://github.com/Arshdeep54/zynk',
@@ -111,6 +120,7 @@ export const projects: Project[] = [
     longDescription:
       '- Implemented B-tree index with snapshot functionality for consistent read views\n- Built core B-tree operations including insert, search, and node management\n- Currently working on HNSW (Hierarchical Navigable Small World) index for vector similarity search',
     category: ['Personal'],
+    tagline: 'Database index structures',
     tech: ['Rust'],
     date: 'Sep 2025',
     github: 'https://github.com/Arshdeep54/indexium',
@@ -123,6 +133,7 @@ export const projects: Project[] = [
     longDescription:
       '- Open-source, cloud-native, unified observability database for metrics, logs and traces, supporting SQL/PromQL/Streaming. Available on GreptimeCloud\n- Improved data import reliability by adding path existence checks with clear error handling\n- Enhanced data type handling by enabling Map to JSON binary conversion in COPY Table command',
     category: ['Open Source'],
+    tagline: 'Observability database contributions',
     tech: ['Rust'],
     date: 'Aug 2025',
     github: 'https://github.com/GreptimeTeam/greptimedb/',

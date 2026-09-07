@@ -17,7 +17,7 @@ export default function TwoParsersOneStream() {
         to agree on where one request in that stream stops and the next one starts.
       </Lede>
 
-      <H2 num="01">The setup</H2>
+      <H2>The setup</H2>
       <P>
         Client talks HTTPS to the proxy. The proxy decrypts it, that&apos;s TLS termination, and forwards the
         request onward as plain HTTP over the internal network. That&apos;s the setup that matters here: two
@@ -51,7 +51,7 @@ export default function TwoParsersOneStream() {
         </svg>
       </Fig>
 
-      <H2 num="02">One pipe, many requests</H2>
+      <H2>One pipe, many requests</H2>
       <P>
         Why not just open a fresh TCP connection for every request? Because the handshake cost adds up fast once
         you&apos;re past a handful of requests a second. So proxies reuse one connection to the backend, called
@@ -94,7 +94,7 @@ export default function TwoParsersOneStream() {
         </svg>
       </Fig>
 
-      <H2 num="03">Two ways to say &ldquo;this is where the body ends&rdquo;</H2>
+      <H2>Two ways to say &ldquo;this is where the body ends&rdquo;</H2>
       <P>
         Think of it like two people transcribing the same phone call, but using different rules for where one
         sentence ends and the next begins. Most of the time they land in the same place. HTTP hands you two
@@ -122,7 +122,7 @@ export default function TwoParsersOneStream() {
         the two parsers fall out of sync about where they are in the stream.
       </P>
 
-      <H2 num="04">Watching it happen, byte by byte</H2>
+      <H2>Watching it happen, byte by byte</H2>
       <P>
         Here&apos;s a single request that a proxy and a backend can read completely differently. Security research
         on this usually calls the two sides <strong className="text-foreground">front-end</strong> (the proxy)
@@ -210,7 +210,7 @@ SMUGGLED`}
         never belongs to the attacker anymore, it belongs to whoever the proxy forwards down that same pipe next.
       </P>
 
-      <H2 num="05">What an attacker actually gets</H2>
+      <H2>What an attacker actually gets</H2>
       <P>
         Replace <code>SMUGGLED</code> with the start of a crafted request instead, and it gets glued onto the
         front of someone else&apos;s traffic. Whoever&apos;s request follows next on that connection, a real
@@ -258,7 +258,7 @@ SMUGGLED`}
 
       <Pull>Both parsers followed a header correctly. They just didn&apos;t follow the same one.</Pull>
 
-      <H2 num="06">How this gets fixed</H2>
+      <H2>How this gets fixed</H2>
       <Table
         head={["Fix", "What it does"]}
         rows={[
@@ -269,7 +269,7 @@ SMUGGLED`}
         ]}
       />
 
-      <H2 num="07">The one-sentence version</H2>
+      <H2>The one-sentence version</H2>
       <Closing>
         A proxy and a backend are two separate programs sharing one stream of bytes for more than one request. The
         moment they disagree about where a request ends, whatever&apos;s left over doesn&apos;t vanish, it becomes

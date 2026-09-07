@@ -1,142 +1,86 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
-import { X, ExternalLink, Github, Lock } from "lucide-react"
+import { ExternalLink, Github, Lock } from "lucide-react"
+import Modal, { Bullets, Field, Tags } from "@/components/modal"
+import { projectIcon } from "@/lib/icons"
 import type { Project } from "@/lib/data"
-import { useEffect } from "react"
 
-interface ProjectDetailProps {
+const bullets = (text: string) =>
+  text
+    .split("\n")
+    .filter((line) => /^\s*[-*]\s+/.test(line))
+    .map((line) => line.replace(/^\s*[-*]\s+/, ""))
+
+export default function ProjectDetail({
+  project,
+  onClose,
+}: {
   project: Project
   onClose: () => void
-}
-
-export default function ProjectDetail({ project, onClose }: ProjectDetailProps) {
-  useEffect(() => {
-    document.body.style.overflow = "hidden"
-    return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [])
+}) {
+  const Icon = projectIcon(project.id)
+  const items = bullets(project.longDescription)
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center sm:justify-center"
-        onClick={onClose}
-      >
-        <motion.div
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ type: "spring", damping: 32, stiffness: 300 }}
-          onClick={(e) => e.stopPropagation()}
-          className="w-full sm:max-w-2xl bg-card border-t sm:border border-border flex flex-col max-h-[90vh] sm:max-h-[85vh] sm:mx-4"
-        >
-          <div className="flex items-start justify-between p-6 sm:p-8 pb-4 border-b border-border flex-shrink-0">
-            <div className="flex-1 pr-4">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-accent mb-2">
-                {project.date}
-              </p>
-              <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-foreground">
-                {project.name}
-              </h2>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {project.category.map((cat) => (
-                  <span
-                    key={cat}
-                    className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground"
-                  >
-                    {cat}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-muted transition-colors flex-shrink-0"
-              aria-label="Close"
-            >
-              <X size={20} />
-            </button>
+    <Modal
+      onClose={onClose}
+      header={
+        <>
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-border bg-muted/60 text-muted-foreground">
+              <Icon size={13} />
+            </span>
+            <h2 className="text-sm text-foreground">{project.name}</h2>
           </div>
+          <p className="mt-2 text-xs text-muted-foreground">
+            {project.date} · {project.category.join(", ")}
+          </p>
+        </>
+      }
+    >
+      <Field label="Overview">
+        {items.length ? (
+          <Bullets items={items} />
+        ) : (
+          <p className="text-muted-foreground leading-relaxed">
+            {project.longDescription}
+          </p>
+        )}
+      </Field>
 
-          <div className="overflow-y-auto flex-1 px-6 sm:px-8 py-6">
-            <div className="space-y-8">
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">
-                  Overview
-                </p>
-                <div className="text-muted-foreground leading-relaxed">
-                  {project.longDescription.includes("- ") || project.longDescription.includes("* ") ? (
-                    <ul className="space-y-2.5">
-                      {project.longDescription
-                        .split(/\n/)
-                        .filter((line) => line.trim().startsWith("- ") || line.trim().startsWith("* "))
-                        .map((line, idx) => (
-                          <li key={idx} className="flex gap-3">
-                            <span className="text-accent mt-1.5">•</span>
-                            <span>{line.replace(/^[-*]\s+/, "")}</span>
-                          </li>
-                        ))}
-                    </ul>
-                  ) : (
-                    <p>{project.longDescription}</p>
-                  )}
-                </div>
-              </div>
+      <Field label="Stack">
+        <Tags items={project.tech} />
+      </Field>
 
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">
-                  Stack
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="font-mono text-xs uppercase tracking-wider text-accent px-3 py-1.5 border border-border"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex gap-3 pt-2">
-                {project.github ? (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-accent-foreground bg-accent hover:opacity-90 transition-opacity"
-                  >
-                    <Github size={16} />
-                    GitHub
-                  </a>
-                ) : (
-                  <div className="inline-flex items-center gap-2 px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-muted-foreground border border-border">
-                    <Lock size={16} />
-                    Private
-                  </div>
-                )}
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-foreground border border-border hover:border-accent transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                    Visit
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+      <div className="flex gap-3 pt-1">
+        {project.github ? (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm text-foreground border border-border hover:border-accent transition-colors"
+          >
+            <Github size={15} />
+            GitHub
+          </a>
+        ) : (
+          <span className="inline-flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground border border-border">
+            <Lock size={15} />
+            Private
+          </span>
+        )}
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm text-foreground border border-border hover:border-accent transition-colors"
+          >
+            <ExternalLink size={15} />
+            Visit
+          </a>
+        )}
+      </div>
+    </Modal>
   )
 }

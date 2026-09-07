@@ -19,7 +19,7 @@ export default function LedgerPattern() {
         actually being able to prove it.
       </Lede>
 
-      <H2 num="01">Agents retry, and retries can duplicate real work</H2>
+      <H2>Agents retry, and retries can duplicate real work</H2>
       <P>
         An agent calls <code>create_account(email)</code>. The response gets lost on the way back, so it retries.
         With no memory of the first attempt, that&apos;s two accounts, two welcome emails, maybe two billing
@@ -73,7 +73,7 @@ export default function LedgerPattern() {
         treated exactly like an honest retry: seen it, ignored.
       </Note>
 
-      <H2 num="02">Stop editing history, only add to it</H2>
+      <H2>Stop editing history, only add to it</H2>
       <P>
         That&apos;s habit one. Habit two is about the log the agent&apos;s actions land in, not just the single
         write it just made. Most tables are mutable: a row is &ldquo;the current truth,&rdquo; and{" "}
@@ -88,7 +88,7 @@ export default function LedgerPattern() {
         history, not a replacement for it.
       </P>
 
-      <H2 num="03">Chaining the log: append-only into tamper-evident</H2>
+      <H2>Chaining the log: append-only into tamper-evident</H2>
       <P>
         Give every row a fingerprint that depends on the row before it. That&apos;s a{" "}
         <strong className="text-foreground">hash chain</strong>, the same idea Git uses for commits. Change one
@@ -133,7 +133,7 @@ export default function LedgerPattern() {
         </svg>
       </Fig>
 
-      <H2 num="04">The blind spot: a chain only proves consistency, not origin</H2>
+      <H2>The blind spot: a chain only proves consistency, not origin</H2>
       <P>
         Why not just stop there? Because a hash chain only proves rows agree with each other, it says nothing
         about whether this is the original history. Anyone holding the agent&apos;s own write access can drop the
@@ -144,7 +144,7 @@ export default function LedgerPattern() {
         check that only compares neighbors.
       </P>
 
-      <H2 num="05">Anchoring the chain somewhere the agent can&apos;t reach</H2>
+      <H2>Anchoring the chain somewhere the agent can&apos;t reach</H2>
       <P>
         Every five minutes or so, a separate checkpoint process takes the hash of the most recent row and calls
         that a <strong className="text-foreground">checkpoint</strong>. It signs the checkpoint with a key the
@@ -257,7 +257,7 @@ RETURNING key;
         can trust the record of what happened, even if something tried to hide it.
       </Pull>
 
-      <H2 num="06">The one-sentence version</H2>
+      <H2>The one-sentence version</H2>
       <Closing>
         If an agent writes to your database unattended, scope its role down to only what it actually needs, give
         every write a key so it can&apos;t happen twice, put every write in a log it can only add to, sealed with
