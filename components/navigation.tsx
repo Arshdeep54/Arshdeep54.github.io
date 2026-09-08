@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import { Menu, Moon, Sun, X } from "lucide-react"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
 
 const links = [
   { href: "/projects", label: "Projects" },
@@ -14,19 +14,7 @@ const links = [
 
 export default function Navigation() {
   const pathname = usePathname()
-  const [isDark, setIsDark] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"))
-  }, [])
-
-  const toggleDarkMode = () => {
-    const next = !isDark
-    setIsDark(next)
-    document.documentElement.classList.toggle("dark", next)
-    localStorage.setItem("theme", next ? "dark" : "light")
-  }
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href)
@@ -74,24 +62,9 @@ export default function Navigation() {
           >
             Resume
           </a>
-
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
         </div>
 
         <div className="flex md:hidden items-center gap-2">
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
             className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"

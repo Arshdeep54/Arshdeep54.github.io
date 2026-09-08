@@ -46,16 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
-      <head>
-        {/* Paint the stored theme before first paint, otherwise dark users get a white flash. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "try{if(localStorage.getItem('theme')!=='light')document.documentElement.classList.add('dark')}catch(e){document.documentElement.classList.add('dark')}",
-          }}
-        />
-      </head>
+    <html lang='en' className='dark'>
       <body
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
