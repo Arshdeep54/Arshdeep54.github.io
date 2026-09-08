@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     url: 'https://hiesenbug.dev',
     siteName: 'Arshdeep Singh',
     type: 'website',
+    images: ['/og.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og.png'],
   },
   icons: {
     icon: '/memoji_title.webp',
