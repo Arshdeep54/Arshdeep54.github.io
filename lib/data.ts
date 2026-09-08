@@ -25,6 +25,20 @@ export interface Experience {
 
 export const projects: Project[] = [
   {
+    id: 'agentq',
+    name: 'agentq',
+    description:
+      'Embeddable Rust job queue with idempotency keys, so a retried tool call never runs twice',
+    longDescription:
+      '- Embeddable job queue published on crates.io, built for agent tool calls where a naive retry re-executes work that already succeeded, causing duplicate writes and duplicate API spend\n- Idempotency keys with cached outputs: pushing a completed key returns the previous result instead of re-running it, and pushing an in-flight key joins the running job so concurrent callers share a single execution\n- Per-lane bounded channels and semaphores give each priority its own backpressure and concurrency budget, so expensive work can be capped independently of cheap work\n- Cancel-safe pushes and RAII drop guards mean a panicking job, or a cancelled future, still leaves the queue in a consistent state; 23 integration tests cover the concurrency invariants',
+    category: ['Personal'],
+    tagline: 'Idempotent job queue',
+    tech: ['Rust', 'Tokio', 'Async', 'crates.io'],
+    date: 'Sep 2026 - Present',
+    link: 'https://crates.io/crates/agentq',
+    github: 'https://github.com/Arshdeep54/agentq',
+  },
+  {
     id: 'huell',
     name: 'Huell',
     description:
@@ -64,18 +78,6 @@ export const projects: Project[] = [
     github: 'https://github.com/sdslabs/watchdog',
   },
   {
-    id: 'pgmoneta',
-    name: 'pgmoneta',
-    description: 'High-performance PostgreSQL connection pooler',
-    longDescription:
-      '- A lightweight, high-performance connection pooler for PostgreSQL designed for low-latency environments and efficient resource usage\n- Added Docker support for containerized workflows\n- Integrated FreeBSD support into the CI pipeline to expand to 3 platforms\n- Implemented load-save approach for struct backup flow, reducing 7+ functions to 2',
-    category: ['Open Source'],
-    tagline: 'PostgreSQL connection pooler',
-    tech: ['C', 'PostgreSQL', 'Docker', 'CI/CD'],
-    date: 'Mar 2025 - Jul 2025',
-    github: 'https://github.com/pgmoneta/pgmoneta',
-  },
-   {
     id: 'wasmedge-installer',
     name: 'Wasmedgeup',
     description: 'Cross-platform WasmEdge installer with hardware detection',
@@ -86,6 +88,18 @@ export const projects: Project[] = [
     tech: ['Rust', 'Cross-platform', 'CI/CD', 'Hardware Detection'],
     date: 'Sep 2025 - Nov 2025',
     github: 'https://github.com/Arshdeep54',
+  },
+   {
+    id: 'pgmoneta',
+    name: 'pgmoneta',
+    description: 'High-performance PostgreSQL connection pooler',
+    longDescription:
+      '- A lightweight, high-performance connection pooler for PostgreSQL designed for low-latency environments and efficient resource usage\n- Added Docker support for containerized workflows\n- Integrated FreeBSD support into the CI pipeline to expand to 3 platforms\n- Implemented load-save approach for struct backup flow, reducing 7+ functions to 2',
+    category: ['Open Source'],
+    tagline: 'PostgreSQL connection pooler',
+    tech: ['C', 'PostgreSQL', 'Docker', 'CI/CD'],
+    date: 'Mar 2025 - Jul 2025',
+    github: 'https://github.com/pgmoneta/pgmoneta',
   },
   {
     id: 'meridb',
