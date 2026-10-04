@@ -27,14 +27,16 @@ export default function HomeIndex() {
     .map((id) => experiences.find((e) => e.id === id))
     .filter((e) => e !== undefined)
 
-  // The curated five, newest first: the raw order made the year column look random.
-  const featured = projects
-    .slice(0, 5)
-    .sort(
-      (a, b) =>
-        new Date(b.date.split(" - ")[0]).getTime() -
-        new Date(a.date.split(" - ")[0]).getTime()
-    )
+  // The curated five, newest first; adding new projects must not displace it.
+  const featured = [
+    "agentq",
+    "huell",
+    "wasmedge-installer",
+    "vortexdb",
+    "watchdog",
+  ]
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p) => p !== undefined)
 
   const posts = [...blogPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()

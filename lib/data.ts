@@ -25,6 +25,46 @@ export interface Experience {
 
 export const projects: Project[] = [
   {
+    id: 'voiceboard',
+    name: 'voiceboard',
+    description:
+      'Android phone as a private voice input device for Linux apps over Tailscale, no cloud, no accounts',
+    longDescription:
+      '- Use an Android phone as a private voice/text input device for whatever Linux application is focused; recognized text is pasted into the app with Ctrl+Shift+V\n- Speech recognition runs entirely in the phone browser (with Android dictation fallback), so audio never leaves your tailnet\n- The receiver binds only to the local Tailscale IP and issues a fresh, ephemeral pairing token per session; tokens are never persisted and prompts are never logged\n- Optional PWA install over HTTPS via Tailscale Serve, with clipboard-only mode, send-with-Enter option, and TOML config',
+    category: ['Personal'],
+    tagline: 'Phone as voice input',
+    tech: ['Python', 'Tailscale', 'Android', 'Web Speech API', 'PWA'],
+    date: 'Sep 2026 - Present',
+    github: 'https://github.com/Arshdeep54/voiceboard',
+  },
+  {
+    id: 'memtop',
+    name: 'memtop',
+    description:
+      'Tiny Linux CLI that shows the biggest memory hogs, with app grouping, interactive kill mode, and command profiling',
+    longDescription:
+      '- Memory monitor for Linux that reads /proc directly, so numbers are exactly what the kernel reports rather than a ps parse\n- Views for everything: per-process table, grouped by application with PSS so shared pages are counted once, process tree, JSON snapshots with before/after diff, and an orphan finder for stale dev processes\n- Interactive kill mode with arrow-key navigation, live watch mode, and peak-memory profiling of a command and all its descendants via `memtop run -- cargo build`\n- Filtering by user/PID/port/minimum size, OOM score columns, and CPU sorting; installable with a curl one-liner or `cargo install --git`',
+    category: ['Personal'],
+    tagline: 'Linux memory monitor',
+    tech: ['Rust', 'Linux', 'CLI', '/proc'],
+    date: 'Sep 2026 - Present',
+    github: 'https://github.com/Arshdeep54/memtop',
+  },
+  {
+    id: 'gmail-mcp',
+    name: 'gmail-mcp',
+    description:
+      'Self-hosted read + draft-only MCP server for Gmail, so inbox data never leaves your own infrastructure',
+    longDescription:
+      '- Self-hosted MCP server for Gmail built on the official Gmail API: no third-party relay, your Google OAuth token and email data stay on whatever machine you run it on\n- Tools cover search with Gmail query syntax, reading messages and threads, listing labels, and creating drafts — read + draft-only by construction, there is no send, modify, or delete tool\n- Ships a minimal OAuth 2.1 authorization server (authorization code + PKCE) with a passphrase-gated consent screen, so hosted clients like ChatGPT custom connectors can connect over HTTPS\n- Works locally over stdio with Claude Code, or as a Docker deployment behind a reverse proxy for hosted MCP clients',
+    category: ['Personal'],
+    tagline: 'Self-hosted Gmail MCP',
+    tech: ['Python', 'MCP', 'Gmail API', 'OAuth 2.1', 'Docker'],
+    date: 'Sep 2026 - Present',
+    link: 'https://gmail-mcp.hiesenbug.dev',
+    github: 'https://github.com/Arshdeep54/gmail-mcp',
+  },
+  {
     id: 'agentq',
     name: 'agentq',
     description:
