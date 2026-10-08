@@ -6,10 +6,12 @@ import ToTop from "@/components/to-top"
 import { blogPosts } from "@/lib/data"
 import TwoParsersOneStream from "@/components/blog-posts/two-parsers-one-stream"
 import LedgerPattern from "@/components/blog-posts/ledger-pattern"
+import ReadOnlyTests from "@/components/blog-posts/read-only-tests"
 
 const content: Record<string, React.ComponentType> = {
   "two-parsers-one-stream": TwoParsersOneStream,
   "ledger-pattern": LedgerPattern,
+  "read-only-tests": ReadOnlyTests,
 }
 
 export function generateStaticParams() {

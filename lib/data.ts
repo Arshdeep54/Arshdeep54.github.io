@@ -502,6 +502,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'read-only-tests',
+    title: 'Why Read-Only Tests Don’t Secure Coding-Agent Training',
+    description:
+      'Unchanged tests can still produce a false reward. A small pytest example, the execution boundary it exposes, and how to tie a grade to the exact submission tested.',
+    date: 'Oct 2026',
+    readingTime: '13 min',
+    tags: ['AI Agents', 'Reinforcement Learning', 'Security'],
+  },
+  {
     slug: 'hnsw-index-part-1',
     title: 'HNSW, Part 1: The Mental Model',
     description:
