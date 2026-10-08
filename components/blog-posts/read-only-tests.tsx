@@ -6,7 +6,7 @@ function Box({ x, y, width, lines, writable = false }: {
   return (
     <g className="font-mono" fill="currentColor">
       <rect x={x} y={y} width={width} height={30 + lines.length * 24} rx="4" fill="currentColor" fillOpacity=".025" stroke="currentColor" strokeDasharray={writable ? "5 4" : undefined} />
-      {lines.map((line, i) => <text key={line} x={x + 16} y={y + 26 + i * 24} fontSize={i === 0 ? 12 : 11}>{line}</text>)}
+      {lines.map((line, i) => <text key={line} x={x + 16} y={y + 26 + i * 24} fontSize="12">{line}</text>)}
     </g>
   )
 }
@@ -14,7 +14,7 @@ function Box({ x, y, width, lines, writable = false }: {
 function WorkspaceDiagram() {
   return (
     <Fig caption="Figure 1. Read-only tests and writable workspace code enter the same pytest runtime. The controller trusts that process's exit status.">
-      <svg viewBox="0 0 660 260" role="img" aria-label="Writable checkout.py and conftest.py feed the same pytest process as a protected test file. A separate controller converts the process exit code to reward." className="w-full h-auto min-w-[540px] text-muted-foreground">
+      <svg viewBox="0 0 660 260" role="img" aria-label="Writable checkout.py and conftest.py feed the same pytest process as a protected test file. A separate controller converts the process exit code to reward." className="w-full h-auto min-w-[660px] text-muted-foreground">
         <defs><marker id="rt-workspace" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" /></marker></defs>
         <text x="16" y="20" fontSize="11" className="font-mono" fill="currentColor">DASHED = AGENT WRITABLE · SOLID = CONTROLLER OWNED</text>
         <Box x={16} y={44} width={222} lines={["/task", "checkout.py", "conftest.py"]} writable />
@@ -30,7 +30,7 @@ function WorkspaceDiagram() {
 function CollectionDiagram() {
   return (
     <Fig caption="Figure 2. The test files do not change. The hook marks the collected items skipped, so neither assertion executes.">
-      <svg viewBox="0 0 660 270" role="img" aria-label="Two unchanged assertions enter a collection hook. The hook skips both tests. Pytest exits zero, and the naive grading rule awards one despite zero assertions executing." className="w-full h-auto min-w-[540px] text-muted-foreground">
+      <svg viewBox="0 0 660 270" role="img" aria-label="Two unchanged assertions enter a collection hook. The hook skips both tests. Pytest exits zero, and the naive grading rule awards one despite zero assertions executing." className="w-full h-auto min-w-[660px] text-muted-foreground">
         <defs><marker id="rt-collection" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" /></marker></defs>
         <text x="16" y="20" fontSize="11" className="font-mono" fill="currentColor">FILE CONTENT ≠ EXECUTED CHECKS</text>
         <Box x={16} y={44} width={226} lines={["unchanged assertions", "total([5, 7]) == 12", "total([10, 20]) == 30"]} />
@@ -46,7 +46,7 @@ function CollectionDiagram() {
 function BoundaryDiagram() {
   return (
     <Fig caption="Figure 3. The candidate produces an answer. The separate evaluator owns the expected answer and decides whether to award credit.">
-      <svg viewBox="0 0 660 350" role="img" aria-label="The evaluator sends prices five and seven to an isolated candidate. It receives zero, compares with its own expected twelve, and awards zero. Expected answers and reward credentials are outside the candidate sandbox." className="w-full h-auto min-w-[540px] text-muted-foreground">
+      <svg viewBox="0 0 660 350" role="img" aria-label="The evaluator sends prices five and seven to an isolated candidate. It receives zero, compares with its own expected twelve, and awards zero. Expected answers and reward credentials are outside the candidate sandbox." className="w-full h-auto min-w-[660px] text-muted-foreground">
         <defs><marker id="rt-boundary" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" /></marker></defs>
         <text x="16" y="20" fontSize="11" className="font-mono" fill="currentColor">SOLID = EVALUATOR · DASHED = UNTRUSTED EXECUTION</text>
         <rect x="16" y="44" width="257" height="285" rx="4" fill="currentColor" fillOpacity=".025" stroke="currentColor" />
@@ -66,73 +66,75 @@ function BoundaryDiagram() {
   )
 }
 
-function ReceiptDiagram() {
-  return (
-    <Fig caption="Figure 4. Bind the grade to the requested submission and attempt. Matching identity does not prove that the evaluator's logic is correct.">
-      <svg viewBox="0 0 660 260" role="img" aria-label="The controller expects episode 104 attempt two, submission a71f, and suite b402. A result for old submission 92bd is rejected. A matching result is accepted once, only through the authorized evaluator's channel." className="w-full h-auto min-w-[540px] text-muted-foreground">
-        <text x="16" y="20" fontSize="11" className="font-mono" fill="currentColor">THE RESULT MUST DESCRIBE THE REQUESTED RUN</text>
-        <Box x={16} y={44} width={628} lines={["controller expects: ep-104 / attempt-2", "submission a71f… · suite b402…"]} />
-        <Box x={16} y={145} width={298} lines={["old result: submission 92bd…", "identity mismatch → reject"]} />
-        <Box x={346} y={145} width={298} lines={["new result: submission a71f…", "matching run → accept once"]} />
-        <text x="16" y="251" fontSize="11" className="font-mono" fill="currentColor">Both records must also come from the authorized evaluator.</text>
-      </svg>
-    </Fig>
-  )
-}
-
 export default function ReadOnlyTests() {
   return (
     <>
       <Lede>
         Give a coding agent a repository, a terminal, and a reward whenever the tests pass.
-        Then mount the tests read-only so it cannot rewrite the answer key. That sounds like a
-        sensible boundary. There is one problem: the agent does not need to change a test file
-        to change what happens when the test runner starts.
+        Then mount the tests read-only so it cannot rewrite the answer key. That sounds sensible.
+        But broken code can still earn the reward without changing a single test. The gap is
+        between protecting the test files and controlling what happens when they run.
       </Lede>
+      <P>
+        We will reproduce that gap with a tiny checkout function, try the obvious fix, and see
+        why the evaluator needs a stronger boundary. Basic Python and the idea of an RL reward
+        are enough to follow the examples. The production details come after the demonstration.
+      </P>
+      <nav aria-label="In this article" className="my-8 border-y border-border py-4 text-sm">
+        <p className="mb-3 text-foreground font-medium">In this article</p>
+        <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+          <li><a href="#score" className="underline underline-offset-4">What the score actually measures</a></li>
+          <li><a href="#workspace" className="underline underline-offset-4">The protected tests and writable workspace</a></li>
+          <li><a href="#skip" className="underline underline-offset-4">Two skipped tests, one reward</a></li>
+          <li><a href="#import" className="underline underline-offset-4">Why disabling the hook is not enough</a></li>
+          <li><a href="#boundary" className="underline underline-offset-4">Let the candidate answer; let the evaluator judge</a></li>
+          <li><a href="#production" className="underline underline-offset-4">Keep the grade attached to the right run</a></li>
+          <li><a href="#reproduce" className="underline underline-offset-4">Run the demonstration yourself</a></li>
+        </ol>
+        <p className="mt-4 text-xs text-muted-foreground">Wide code blocks and figures scroll horizontally on small screens.</p>
+      </nav>
 
-      <H2>The score is part of the training system</H2>
+      <H2 id="score">What the score actually measures</H2>
       <P>
-        In reinforcement learning, the agent tries a sequence of actions and receives a numerical
-        reward. The training algorithm uses that feedback to update the policy, the model that
-        chooses its next actions. A coding task might award one point when a proposed fix passes
-        its checks, and zero otherwise. We will use that deliberately simple rule here.
+        In reinforcement learning, the agent takes actions and receives a numerical reward.
+        The training algorithm uses that feedback to update its policy, the model that chooses
+        actions. Here, the rule is simple: one point for a passing submission, zero otherwise.
       </P>
       <P>
-        A grader is the program that turns the submission into that score. Its job sounds small:
-        run the tests, read the outcome, return a number. But the model is being optimized against
-        whatever this program actually measures. If the score can increase without the code getting
-        better, the feedback has stopped representing the task.
+        A grader turns a submission into that number. If it awards a point when the code is still
+        wrong, the training system receives a positive signal for the wrong outcome. It measures
+        whatever the grader accepts, even when that differs from solving the task.
       </P>
       <P>
-        Researchers call changing the mechanism that produces reward <strong className="text-foreground">reward
-        tampering</strong>. Anthropic has studied it in controlled language-model experiments; that
-        does not establish how often a particular production agent would attempt it. We do not
-        need to make that claim to examine a vulnerable grader. Its security should not depend on
-        the current model declining to use the permissions it has.{" "}
+        Changing the mechanism that produces reward is called <strong className="text-foreground">reward
+        tampering</strong>. Anthropic studied it in controlled language-model experiments, with
+        important limits on what those experiments say about production agents.{" "}
         <a href="https://www.anthropic.com/research/reward-tampering" className="underline underline-offset-4">The original research</a>
-        {" "}is useful context; the small example below is a separate demonstration.
+        {" "}provides context. Our example demonstrates an available exploit path; it does not
+        show an agent independently discovering it or measure how often agents would use it.
       </P>
 
-      <H2>The files are protected. The execution is not.</H2>
+      <H2 id="workspace">The files are protected. The execution is not.</H2>
       <P>
-        Suppose the task is to implement <code>total(prices)</code>. The agent can edit{" "}
-        <code>checkout.py</code> and create other files in <code>/task</code>. The controller mounts
-        its own tests at <code>/task/tests</code> read-only, then runs pytest from <code>/task</code>.
-        The agent cannot alter that mount or the controller&apos;s code. It can execute arbitrary
-        Python in its workspace. Those permissions are the threat model, the capabilities we are
-        assuming when we ask what can go wrong.
+        The task is to implement <code>total(prices)</code>. The agent can edit files in{" "}
+        <code>/task</code>, except the tests, which are mounted read-only. It can run arbitrary
+        Python there. The controller, the program managing the grading job, owns the tests and
+        launches pytest. The agent cannot change the controller or the mount. These permissions
+        are our threat model: what the agent is allowed to control.
       </P>
-      <CodePanel title="the deliberately small workspace">
+      <CodePanel title="the workspace">
 {`task/
 ├── checkout.py             # agent can edit
 ├── conftest.py             # agent can create
 └── tests/                  # read-only test mount
     └── test_checkout.py`}
       </CodePanel>
-      <P>
-        The tests are straightforward. Two different orders need two different totals. An
-        implementation that always returns zero fails both.
-      </P>
+      <P>The candidate is the submitted implementation. Start with a broken one:</P>
+      <CodePanel title="checkout.py · agent-controlled">
+{`def total(prices):
+    return 0`}
+      </CodePanel>
+      <P>The controller&apos;s two tests require different totals. Returning zero fails both.</P>
       <CodePanel title="tests/test_checkout.py · controller-owned">
 {`from checkout import total
 
@@ -143,34 +145,33 @@ def test_large_order():
     assert total([10, 20]) == 30`}
       </CodePanel>
       <P>
-        Our controller launches pytest in a child process and turns a successful process exit into
-        reward. <code>returncode</code> is the operating system&apos;s exit status for that process.
-        The code below assumes that zero means the required checks actually passed.
+        The controller starts a child process and reads its exit status. Zero conventionally means
+        the command succeeded. Our vulnerable grader assumes that means the required assertions passed.
       </P>
-      <CodePanel title="the vulnerable grading rule">
-{`result = subprocess.run(
+      <CodePanel title="the vulnerable grading rule · /task is the example workspace">
+{`import subprocess
+import sys
+
+result = subprocess.run(
     [sys.executable, "-m", "pytest", "-q", "tests/test_checkout.py"],
     cwd="/task", capture_output=True, text=True, timeout=10,
 )
 reward = int(result.returncode == 0)`}
       </CodePanel>
       <P>
-        There are now two inputs to the same Python process: protected tests and agent-controlled
-        code. pytest also supports local configuration and hooks, functions it calls at particular
-        stages of a run. A <code>conftest.py</code> in a parent directory can supply those hooks to
-        tests underneath it. In this layout, the writable workspace is that parent directory.{" "}
-        <a href="https://docs.pytest.org/en/stable/how-to/writing_plugins.html" className="underline underline-offset-4">pytest documents that discovery behavior.</a>
+        pytest loads the protected tests and the candidate into the same Python process. It also
+        loads local hooks: functions called at particular stages of a test run. A parent directory&apos;s{" "}
+        <code>conftest.py</code> can supply hooks for the tests below it. Here, that parent directory
+        is writable by the agent.{" "}
+        <a href="https://docs.pytest.org/en/stable/how-to/writing_plugins.html" className="underline underline-offset-4">pytest documents this discovery behavior.</a>
       </P>
       <WorkspaceDiagram />
 
-      <H2>Two skipped tests, one successful process</H2>
+      <H2 id="skip">Two skipped tests, one successful process</H2>
       <P>
-        Keep <code>checkout.py</code> broken: <code>total</code> still returns zero. Now add this
-        workspace hook. It runs after pytest has collected the test items and adds a skip marker
-        to every item. Collection means finding the checks to run; a skip means a check exists
-        but its test body will not execute. These are ordinary{" "}
-        <a href="https://docs.pytest.org/en/stable/how-to/writing_hook_functions.html" className="underline underline-offset-4">pytest hook mechanics</a>,
-        {" "}used in the wrong trust relationship.
+        Keep the broken function. Add the hook below to <code>conftest.py</code>. It runs after
+        collection, when pytest has found the tests to run. Each item represents one test. The
+        hook marks both skipped, so neither test body executes.
       </P>
       <CodePanel title="conftest.py · agent-controlled">
 {`import pytest
@@ -180,18 +181,11 @@ def pytest_collection_modifyitems(items):
         item.add_marker(pytest.mark.skip(reason="not this run"))`}
       </CodePanel>
       <P>
-        pytest reports two skipped tests and exits zero. The grader awards one point. The
-        implementation is still wrong, and neither assertion ran. The protected files did their
-        job: their contents are unchanged. They were never the thing this hook needed to change.
+        pytest reports two skipped tests and exits zero. The grader awards one point. The function
+        still returns zero, and neither assertion ran. No protected file needed to change.
       </P>
       <CollectionDiagram />
-      <Note label="verified example">
-        These outcomes were reproduced with Python 3.12 and pytest 8.4.2. The test file&apos;s bytes
-        were checked before and after. The local demonstration used file permissions, not an OS
-        read-only mount; no step attempted to write the tests. A real read-only mount blocks edits
-        but does not, by itself, stop loading a hook from the writable parent directory.
-      </Note>
-      <CodePanel title="observed outcomes · durations omitted">
+      <CodePanel title="demonstration outcomes · timings omitted">
 {`submission                         pytest result     exit    reward
 ----------------------------------------------------------------
 return 0                           2 failed          1       0
@@ -199,77 +193,82 @@ return 0 + skip hook               2 skipped         0       1
 return 0 + skip hook + --noconftest  2 failed          1       0`}
       </CodePanel>
       <P>
-        No tests collected is a different case: pytest normally returns exit code five. The hook
-        above does not remove the tests. It leaves both items present and marks them skipped.
-        Conflating &ldquo;the command succeeded&rdquo; with &ldquo;the required assertions passed&rdquo;
-        is the bug in our grading contract.{" "}
-        <a href="https://docs.pytest.org/en/stable/reference/exit-codes.html" className="underline underline-offset-4">pytest&apos;s exit-code reference</a>
-        {" "}describes the process outcomes, not your task&apos;s acceptance policy.
+        This is normal pytest behavior, not a bug in pytest. Skipping can be useful in an ordinary
+        test suite. The bug is our controller treating a run with no failures as proof that the
+        required assertions passed. Removing all collected tests would be different: pytest normally
+        exits five when it finds no tests.{" "}
+        <a href="https://docs.pytest.org/en/stable/reference/exit-codes.html" className="underline underline-offset-4">Its exit codes</a>
+        {" "}describe process outcomes; our task still needs its own acceptance rule.
+      </P>
+      <P>
+        For RL, that distinction matters immediately: this submission receives the same positive
+        score as a correct implementation. The feedback no longer distinguishes solving the task
+        from bypassing its checks. This demonstration establishes the faulty signal, not what a
+        particular training run will learn from it.
       </P>
       <Pull>Read-only protects the answer key. It does not establish who controls the exam.</Pull>
 
-      <H2>Remove the hook. Then look one layer deeper.</H2>
+      <H2 id="import">Remove the hook. Then look one layer deeper.</H2>
       <P>
-        One fix is immediate: disable workspace <code>conftest.py</code> discovery for this grading
-        run. Also choose a controller-owned configuration file and prevent automatic loading of
-        installed third-party plugins. The controller must supply the environment and arguments;
-        accepting an agent-provided command would move the same problem somewhere else.
+        Add <code>--noconftest</code> to the controller&apos;s pytest command. It blocks this hook,
+        and the broken function fails again. In a controlled grading environment, also select a
+        controller-owned configuration and disable automatic loading of installed plugins.
       </P>
-      <CodePanel title="one layer of hardening · not a complete sandbox">
+      <CodePanel title="deployment sketch · paths supplied by the controller">
 {`PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /opt/venv/bin/python -m pytest \\
     --noconftest -c /grader/pytest.ini /task/tests/test_checkout.py`}
       </CodePanel>
       <P>
-        <code>--noconftest</code> blocks our collection hook. <code>-c</code> selects the intended
-        configuration. <code>PYTEST_DISABLE_PLUGIN_AUTOLOAD=1</code> disables discovery of installed
-        plugin entry points, not every possible way to load Python code. Plugins explicitly
-        requested through arguments or environment still need a policy. These controls are
-        documented in{" "}
-        <a href="https://docs.pytest.org/en/stable/how-to/plugins.html" className="underline underline-offset-4">pytest&apos;s plugin guide</a>.
-        {" "}They reduce one attack surface; they do not make the candidate implementation trusted.
+        These flags close specific routes. They do not make the submitted code trusted. The
+        controller must also control arguments and environment variables, including explicit
+        plugin requests; disabling autoload does not disable every plugin-loading mechanism.{" "}
+        <a href="https://docs.pytest.org/en/stable/how-to/plugins.html" className="underline underline-offset-4">The plugin guide explains the distinction.</a>
       </P>
       <P>
-        The tests still import <code>checkout.py</code>. Importing a Python module executes its
-        top-level statements inside the importing process. Change that module to the following,
-        keep <code>--noconftest</code>, and our naive reward rule is broken again.
+        More fundamentally, the tests still import <code>checkout.py</code>. Python executes a
+        module&apos;s top-level statements during import. Replace the function with this:
       </P>
-      <CodePanel title="a second failure · candidate code exits the runner">
-{`# Executed inside the runner when the tests import checkout.
-import os
+      <CodePanel title="checkout.py · exits before the assertions run">
+{`import os
 os._exit(0)`}
       </CodePanel>
       <P>
-        In the reproduced run, that process exited zero with no output. The grader again awarded
-        one. Python&apos;s <code>os._exit</code> terminates the process directly; it does not prove
-        that pytest reached the end of its checks.{" "}
-        <a href="https://docs.python.org/3/library/os.html#os._exit" className="underline underline-offset-4">The Python API documents this behavior.</a>
+        Even with <code>--noconftest</code>, the process exits zero before running the assertions,
+        and our grader awards one. <code>os._exit</code> terminates the process directly, without
+        normal cleanup or flushing buffered output.{" "}
+        <a href="https://docs.python.org/3/library/os.html#os._exit" className="underline underline-offset-4">Python documents that behavior.</a>
       </P>
       <P>
-        Requiring a complete report and the expected number of executed tests would reject this
-        particular empty result. But a report produced in a runtime that imports adversarial code
-        is still a claim from that runtime. Checking its shape is useful. Treating its shape as
-        proof that the checks executed is a stronger conclusion than it supports.
+        Requiring a complete report and the expected test count would reject this empty result.
+        But if candidate code runs inside the process producing the report, that report alone
+        cannot prove the checks ran. Disabling the hook fixed one entry point. It did not separate
+        the candidate from the machinery judging it.
       </P>
 
-      <H2>Move the comparison outside the candidate runtime</H2>
+      <H2 id="boundary">Let the candidate answer. Let the evaluator judge.</H2>
       <P>
-        For this small function task, we can draw a clearer boundary. A separate evaluator owns
-        the inputs, expected answers, and scoring rule. It sends one input to an isolated candidate
-        worker, receives an answer, validates its format, and compares it with the expected value.
-        It never imports the candidate code into its own Python interpreter.
+        Before choosing a defense, separate three problems that are often grouped together as
+        reward hacking. A hardcoded answer, a skipped assertion, and an old result need different fixes.
+      </P>
+      <Table head={["Failure", "Example", "Defense"]} rows={[
+        ["Weak specification", "Code recognizes our two example orders but cannot total other orders.", "Broader and held-out cases, property checks, and a better task definition."],
+        ["Evaluator tampering", "Candidate code skips the checks or terminates the runner.", "Control runner inputs and check answers outside candidate execution where the task permits it."],
+        ["Result substitution", "Yesterday’s passing result is accepted for today’s patch.", "Freeze the submission and accept only the evaluator’s result for the requested attempt."],
+      ]} />
+      <P>
+        For our function task, an evaluator can own the inputs, expected answers, and scoring rule.
+        The controller asks it to grade a frozen copy of the submission, called a snapshot. A
+        candidate worker runs that code in isolation and returns an answer. The evaluator checks
+        the answer without importing candidate code into its own interpreter.
       </P>
       <P>
-        For <code>[5, 7]</code>, the expected total is twelve. The broken candidate answers zero,
-        so the evaluator awards no credit. If the candidate exits early, there is no completed
-        answer to compare. Neither a successful exit nor a line saying &ldquo;tests passed&rdquo;
-        replaces the answer the evaluator requested. Expected answers and credentials for submitting
-        rewards stay outside the candidate sandbox.
+        For <code>[5, 7]</code>, the evaluator expects twelve. A reply of zero earns no credit.
+        An early exit supplies no answer to compare. A successful exit or a line saying
+        &ldquo;tests passed&rdquo; cannot replace the requested result.
       </P>
       <BoundaryDiagram />
-      <CodePanel title="the scoring rule belongs to the evaluator">
-{`# Architecture sketch. run_candidate is an OS-isolated worker,
-# not a plain subprocess with the grader's credentials.
-cases = [([5, 7], 12), ([10, 20], 30)]
+      <CodePanel title="architecture sketch · the same all-or-nothing reward">
+{`cases = [([5, 7], 12), ([10, 20], 30)]
 passed = 0
 
 for prices, expected in cases:
@@ -278,124 +277,111 @@ for prices, expected in cases:
         continue
     passed += int(reply.output["total"] == expected)
 
-reward = passed / len(cases)`}
+reward = int(passed == len(cases))`}
       </CodePanel>
       <P>
-        Here <code>valid_total</code> checks a bounded JSON response with an integer{" "}
-        <code>total</code>, and <code>completed</code> means that response arrived before the
-        deadline under the expected request protocol. Both are evaluated outside the candidate.
-        <code>run_candidate</code> stands for an OS-isolated execution service, not a magic Python
-        helper. A plain subprocess running as the same user can share filesystem access and other
-        privileges with its parent. Moving code into another PID is not the security argument.
+        The evaluator checks that the reply arrived before the deadline and contains a bounded
+        JSON response with an integer <code>total</code>. It records missing or invalid replies
+        separately; neither earns credit. <code>run_candidate</code> represents an execution service
+        with an enforced isolation boundary. This is a design sketch, not a runnable secure evaluator.
       </P>
       <P>
-        The worker needs an enforced boundary: no host workspace mounts, no evaluator credentials,
-        no access to the evaluator&apos;s processes, restricted network access, and CPU, memory,
-        output, and time budgets. Containers, stronger application sandboxes, or microVMs offer
-        different costs and guarantees. The design needs to state which guarantees it actually
-        relies on. Giving the worker access to the host&apos;s Docker daemon would hand back control
-        of the execution infrastructure.{" "}
-        <a href="https://docs.docker.com/engine/security/" className="underline underline-offset-4">Docker documents that daemon boundary.</a>
+        Another process ID is not enough. A child running as the same user can share filesystem
+        access and other privileges with its parent. The worker needs no access to evaluator
+        credentials, host workspace files, or evaluator processes; it also needs restricted network
+        access and limits on CPU, memory, output, and time. Containers, application sandboxes, and
+        microVMs offer different costs and guarantees. Access to the host&apos;s Docker daemon can
+        hand control of that infrastructure back to the worker.{" "}
+        <a href="https://docs.docker.com/engine/security/" className="underline underline-offset-4">Docker explains this boundary.</a>
       </P>
-      <Note label="the important limit" tone="chart-3">
-        This black-box split fits a function with a simple input/output contract. Testing a web
-        server, an entire codebase, or a compiler can require richer interactions and fixtures.
-        Running the whole pytest suite in another container contains execution; it does not
-        automatically prevent candidate code inside that container from misleading its runner.
-        Define the observable behavior the outside evaluator can check, and state what remains trusted.
+      <Note label="where this works">
+        A function with a simple input/output contract is easy to check from outside. A web server,
+        compiler, or whole repository may need richer interactions and fixtures. Putting pytest
+        in another container can contain execution while leaving candidate code able to interfere
+        with its runner inside that container. State what the outside evaluator can observe and
+        what it still trusts.
       </Note>
+      <P>
+        This separation protects who decides the grade. It does not make two test cases a complete
+        specification. Hidden and varied cases help with hardcoding, but a test in the same process
+        as arbitrary candidate code is not secret just because its file is hidden.
+      </P>
 
-      <H2>Freeze the submission you are about to grade</H2>
+      <H2 id="production">Keep the grade attached to the right run</H2>
       <P>
-        There is a separate race even with a well-isolated evaluator. The agent finishes a patch,
-        the controller starts grading, and a background process keeps changing the working tree.
-        If the controller hashes the directory now and reads its files later, the hash and execution
-        may describe different submissions. This is a time-of-check/time-of-use problem: the thing
-        you checked changed before you used it.
+        We have separated the answer from the judgment. Production grading needs three more
+        bookkeeping rules so that judgment describes the code we actually submitted.
+      </P>
+      <h3 className="mt-8 mb-3 text-lg font-medium">Freeze the files before grading</h3>
+      <P>
+        Suppose a background process replaces <code>checkout.py</code> after the controller hashes
+        it but before the worker reads it. The hash describes one version; the grade describes
+        another. This is a time-of-check/time-of-use race: something changed between checking and using it.
       </P>
       <P>
-        Stop writes or take an atomic snapshot first. Materialize the permitted submission files
-        into immutable storage, compute their digest there, and make the evaluator execute that
-        exact stored snapshot. A digest is a fingerprint of bytes; hashing a live mutable directory
-        is not a snapshot. When extracting an archive, reject escaping paths and disallowed symlinks
-        before it reaches the execution worker.
+        Stop writes or take an atomic snapshot first. Store the frozen submission, compute its
+        digest, and grade that exact stored copy. A digest is a fingerprint of bytes; hashing a
+        changing directory does not freeze it. If submissions arrive as archives, reject paths
+        that escape the destination and disallowed symlinks before sending files to the worker.
+      </P>
+      <h3 className="mt-8 mb-3 text-lg font-medium">Accept the evaluator&apos;s result for this attempt</h3>
+      <P>
+        Yesterday&apos;s passing result says nothing about today&apos;s patch. Each result should
+        identify the task episode, grading attempt, submission digest, grading image, test suite,
+        and case counts. The controller matches those fields to its job and accepts each attempt
+        at most once. This prevents an old or duplicate result from standing in for the requested run.
       </P>
       <P>
-        The result should carry the episode and attempt identifiers, submission digest, grading
-        image digest, test-suite digest, and case counts. The controller checks these against the
-        grading job it created. It accepts the result through a channel only the evaluator can
-        write to, and accepts a given attempt at most once. An authenticated channel or a signature
-        whose key lives outside the worker can establish the sender. A hash alone cannot.
+        Identity fields alone are not proof of who sent them. Accept results through a channel
+        only the evaluator can write to, or verify a signature whose key stays outside the worker.
+        A hash identifies content; it does not authenticate the sender. Matching identity also
+        cannot prove that the evaluator&apos;s checks cover the whole task.
       </P>
-      <CodePanel title="an illustrative evaluation receipt · shortened digests">
-{`{
-  "episode_id": "ep-104",
-  "attempt_id": "attempt-2",
-  "submission_sha256": "a71f…",
-  "grader_image_digest": "sha256:8c20…",
-  "suite_digest": "b402…",
-  "expected_cases": 2,
-  "completed_cases": 2,
-  "passed_cases": 0,
-  "status": "complete"
-}`}
+      <h3 className="mt-8 mb-3 text-lg font-medium">Record failures without retrying until success</h3>
+      <P>
+        A wrong answer, candidate timeout, crashed evaluator, and mismatched submission are different
+        outcomes. None is a passing task. You might count a candidate timeout as failure under a
+        fixed budget, but retry a verified infrastructure fault with the same frozen submission
+        and a new attempt ID. Set bounded retries and keep those outcomes visible.
+      </P>
+      <P>
+        If you discard every timeout, the training data no longer represents every attempted
+        submission. Failure handling changes which attempts contribute feedback. It is part of
+        the learning setup, not just operational housekeeping.
+      </P>
+      <P>
+        These rules cost storage, execution services, startup time, and freedom to reuse a
+        repository&apos;s normal test setup. For a production training loop, that cost buys a
+        clearer answer to what ran, which submission it used, and who decided the reward.
+      </P>
+
+      <H2 id="reproduce">Run the demonstration yourself</H2>
+      <P>
+        <a href="/examples/read-only-tests.py" download className="underline underline-offset-4">Download the self-checking demonstration</a>
+        {" "}and run it in a fresh virtual environment. It creates a temporary workspace, reproduces
+        all four outcomes, checks that the test bytes stayed unchanged, and removes the workspace
+        afterward. It uses Python 3.12 and the pinned pytest version below.
+      </P>
+      <CodePanel title="local reproduction · run beside the downloaded file">
+{`python3.12 -m venv .venv
+.venv/bin/python -m pip install pytest==8.4.2
+.venv/bin/python read-only-tests.py`}
       </CodePanel>
-      <P>
-        Suppose <code>ep-104 / attempt-2</code> is supposed to grade submission <code>a71f…</code>
-        with suite <code>b402…</code>. A passing result for the older submission <code>92bd…</code>
-        is irrelevant, even if it genuinely came from the evaluator. Matching these identifiers
-        ties the result to the work requested; it does not establish that the suite covers every
-        behavior we care about.
-      </P>
-      <ReceiptDiagram />
-
-      <H2>Three failures, three different defenses</H2>
-      <P>
-        The phrase &ldquo;reward hacking&rdquo; can hide distinctions that matter when choosing
-        a defense. A narrow test suite, a writable runner hook, and a forged result are different
-        failures. Fixing one does not imply the other two have been fixed.
-      </P>
-      <Table head={["Failure", "What changed", "What addresses it"]} rows={[
-        ["Weak specification", "A hardcoded answer satisfies the few cases, but not the actual task.", "Broader and held-out cases, property checks, and a better task definition."],
-        ["Evaluator tampering", "A hook or imported candidate code changes what the runner executes.", "Controlled runner inputs and comparison outside the candidate runtime where the task permits it."],
-        ["Result substitution", "A result from another submission or attempt is accepted as this run.", "Immutable snapshot identity, an evaluator-only result channel, and accept-once checks."],
-      ]} />
-      <P>
-        Hidden cases can reduce hardcoding, but hiding a test file on disk does not hide its contents
-        from arbitrary code executing in the same process as the test. Strong isolation protects
-        the grader&apos;s authority; strong task coverage protects the meaning of the grade. We
-        need both.
-      </P>
-
-      <H2>Invalid evaluations are not solved tasks</H2>
-      <P>
-        The scoring protocol also needs explicit failure states. A wrong answer is a valid
-        evaluation with no credit. A timeout, missing response, crashed evaluator, or mismatched
-        submission is not a passing task. Record these separately instead of turning an absent
-        result into success or blindly retrying until one attempt happens to pass.
-      </P>
-      <P>
-        Resource limits and retry rules belong in that contract. You might count a candidate
-        timeout as a failure under a fixed budget, while retrying a verified infrastructure fault
-        under the same submission and a new attempt ID. Whichever policy you choose, use bounded
-        retries and keep the outcomes visible. Quietly excluding slow or invalid runs can change
-        which trajectories the training algorithm sees.
-      </P>
-      <P>
-        There are costs here: snapshot storage, extra execution services, slower startup, stricter
-        dependency control, and less freedom to reuse a repository&apos;s normal test setup.
-        Those costs buy a more precise answer to a question the training loop already depends on:
-        what exactly happened, to which submission, under whose authority?
-      </P>
+      <Note label="demonstration limits">
+        This is a local reproduction, not a sandbox for untrusted submissions. It protects the test
+        file with permissions rather than an OS read-only mount; no example attempts a test-file
+        write. A real read-only mount blocks edits but does not by itself stop parent-directory
+        hooks or candidate code executing during import. No RL model is trained by this script.
+      </Note>
       <Closing>
-        Protect the test files, but keep going. Control what the runner loads, isolate candidate
-        execution from the scoring authority, evaluate an immutable submission, and accept only
-        the evaluator&apos;s result for that exact attempt. Then separately ask whether passing
-        those checks actually means the task was solved. Read-only tests handle one of these
-        requirements. They cannot stand in for the rest.
+        An unchanged test file does not prove that its assertions ran. For this function task,
+        let candidate code produce an answer and let an isolated evaluator check it. Bind that
+        evaluation to the frozen submission and the requested attempt. Then ask whether the checks
+        capture the task: even a trustworthy grade can measure the wrong thing. The training loop
+        needs both a trustworthy evaluator and a reward that means the task was solved.
       </Closing>
       <Sources heading="Sources and implementation details" items={[
-        { label: "Anthropic: Sycophancy to subterfuge, a controlled study of reward tampering", href: "https://www.anthropic.com/research/reward-tampering" },
+        { label: "Anthropic: a controlled study of reward tampering", href: "https://www.anthropic.com/research/reward-tampering" },
         { label: "pytest: plugin and conftest discovery", href: "https://docs.pytest.org/en/stable/how-to/writing_plugins.html" },
         { label: "pytest: collection hooks", href: "https://docs.pytest.org/en/stable/how-to/writing_hook_functions.html" },
         { label: "pytest: skipping and expected failures", href: "https://docs.pytest.org/en/stable/how-to/skipping.html" },
@@ -403,7 +389,6 @@ reward = passed / len(cases)`}
         { label: "pytest: controlling plugin loading", href: "https://docs.pytest.org/en/stable/how-to/plugins.html" },
         { label: "Python: os._exit", href: "https://docs.python.org/3/library/os.html#os._exit" },
         { label: "Docker: daemon access and the host security boundary", href: "https://docs.docker.com/engine/security/" },
-        { label: "gVisor: what an application sandbox isolates, and what it does not", href: "https://gvisor.dev/docs/architecture_guide/intro/" },
       ]} />
     </>
   )

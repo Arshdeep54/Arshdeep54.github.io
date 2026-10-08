@@ -8,9 +8,9 @@ export function Lede({ children }: { children: ReactNode }) {
   )
 }
 
-export function H2({ children }: { children: ReactNode }) {
+export function H2({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <h2 className="mt-14 mb-4 text-xl sm:text-2xl font-medium tracking-tight text-balance">
+    <h2 id={id} className="mt-14 mb-4 text-xl sm:text-2xl font-medium tracking-tight text-balance scroll-mt-24">
       {children}
     </h2>
   )
@@ -18,7 +18,7 @@ export function H2({ children }: { children: ReactNode }) {
 
 export function P({ children }: { children: ReactNode }) {
   return (
-    <p className="text-base text-muted-foreground leading-relaxed mb-5 max-w-2xl">
+    <p className="text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
       {children}
     </p>
   )
@@ -44,7 +44,7 @@ export function Note({
   const borderColor = tone === "accent" ? "border-foreground/60" : "border-foreground/25"
   const labelColor = tone === "accent" ? "text-foreground" : "text-muted-foreground"
   return (
-    <div className={`flex gap-4 border-l-2 ${borderColor} bg-card rounded-sm p-4 my-6`}>
+    <div className={`flex flex-col sm:flex-row gap-2 sm:gap-4 border-l-2 ${borderColor} bg-card rounded-sm p-4 my-6`}>
       <span className={`text-xs ${labelColor} whitespace-nowrap pt-0.5`}>
         {label}
       </span>
@@ -62,7 +62,7 @@ export function Fig({
 }) {
   return (
     <figure className="my-8 rounded border border-border bg-card p-5 sm:p-6">
-      <div className="overflow-x-auto">{children}</div>
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={caption}>{children}</div>
       <figcaption className="mt-4 pt-3 border-t border-dashed border-border font-mono text-xs text-muted-foreground">
         {caption}
       </figcaption>
@@ -78,11 +78,11 @@ export function CodePanel({
   children: ReactNode
 }) {
   return (
-    <div className="my-6 rounded border border-border bg-card text-foreground p-5 font-mono text-[12.5px] sm:text-sm leading-relaxed overflow-x-auto">
+    <div className="my-6 rounded border border-border bg-card text-foreground p-5 font-mono text-sm leading-relaxed overflow-x-auto" tabIndex={0} role="region" aria-label={title}>
       <div className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         {title}
       </div>
-      <pre className="whitespace-pre">{children}</pre>
+      <pre className="whitespace-pre"><code>{children}</code></pre>
     </div>
   )
 }

@@ -22,7 +22,7 @@ export default function BlogHeader({ post }: { post: BlogPost }) {
         ))}
       </div>
 
-      <h1 className="mt-3 text-lg text-foreground">
+      <h1 className="mt-3 text-2xl sm:text-3xl font-medium tracking-tight text-balance text-foreground">
         {post.title}
       </h1>
 
