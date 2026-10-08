@@ -6,7 +6,7 @@ import { PostRow, Section } from "@/components/list-row"
 import { blogPosts } from "@/lib/data"
 
 const sortedPosts = [...blogPosts].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 )
 
 export default function BlogsPage() {
