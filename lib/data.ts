@@ -502,7 +502,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'sparse-retrieval-part-1',
+    slug: 'bm25',
     title: 'Sparse Retrieval, Part 1: Building Up to BM25',
     description:
       'How keyword search ranks documents, from scanning every doc to the inverted index, TF-IDF, and the three fixes that make BM25.',
