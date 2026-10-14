@@ -20,7 +20,7 @@ And again, for relevance, we use term frequency, how many times a word occurred 
 
 ## TF-IDF
 
-Then Searchacians realised that these raw counts are flawed. How? Common words like "an", "the", "which" appear almost everywhere and don't help distinguish anything. So **inverse document frequency (IDF)** was introduced. According to it, words that are common across the collection are downweighted and rare words are upweighted. Multiply TF and IDF and it gives you the ranking. Happy.
+Then Searchacians realised that these raw counts are flawed. How? Some words appear in almost every doc and don't help distinguish anything. Say your collection is a bunch of recipes and you search "add salt to pasta". Nearly every recipe says "add" and "salt", often many times, so they pile up the score, while "pasta", the word that actually matters, gets drowned. So **inverse document frequency (IDF)** was introduced. According to it, words that are common across the collection are downweighted and rare words are upweighted. Multiply TF and IDF and it gives you the ranking. Happy.
 
 $$
 \text{TF-IDF}(q, D) = \text{TF}(q, D) \times \text{IDF}(q)
