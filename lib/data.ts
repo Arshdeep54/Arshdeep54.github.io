@@ -502,6 +502,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'sparse-retrieval-part-1',
+    title: 'Sparse Retrieval, Part 1: Building Up to BM25',
+    description:
+      'How keyword search ranks documents, from scanning every doc to the inverted index, TF-IDF, and the three fixes that make BM25.',
+    date: 'Oct 2026',
+    readingTime: '5 min',
+    tags: ['Search', 'Information Retrieval', 'BM25'],
+  },
+  {
     slug: 'read-only-tests',
     title: 'Why Read-Only Tests Aren’t Enough for Coding-Agent Training',
     description:

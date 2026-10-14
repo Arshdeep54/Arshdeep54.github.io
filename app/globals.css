@@ -136,3 +136,45 @@
     outline-offset: 2px;
   }
 }
+
+/* wide equations in markdown posts scroll instead of clipping on phones */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* plot sliders: thin track and small dot, to match the chart lines */
+.plot-range {
+  appearance: none;
+  height: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.plot-range::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--muted-foreground);
+}
+.plot-range::-moz-range-track {
+  height: 1px;
+  background: var(--muted-foreground);
+}
+.plot-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: var(--foreground);
+  border: 0;
+}
+.plot-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--foreground);
+  border: 0;
+}
+.plot-range:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 2px;
+}
