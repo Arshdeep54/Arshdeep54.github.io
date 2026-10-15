@@ -1,7 +1,6 @@
 import type React from 'react';
 import type { Metadata } from 'next';
 import { Inter, Geist_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const inter = Inter({
@@ -51,7 +50,11 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
-        <Analytics />
+        <script
+          type='module'
+          src='https://static.cloudflareinsights.com/beacon.min.js'
+          data-cf-beacon='{"token": "03fa60a3f53a4e0b8fa4d54a2964fbab"}'
+        />
       </body>
     </html>
   );
