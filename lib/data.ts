@@ -507,7 +507,7 @@ export const blogPosts: BlogPost[] = [
     description:
       'How keyword search ranks documents, from scanning every doc to the inverted index, TF-IDF, and the three fixes that make BM25.',
     date: 'Oct 2026',
-    readingTime: '5 min',
+    readingTime: '8 min',
     tags: ['Search', 'Information Retrieval', 'BM25'],
   },
   {
