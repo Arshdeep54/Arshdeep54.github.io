@@ -5,10 +5,6 @@ import Footer from "@/components/footer"
 import { PostRow, Section } from "@/components/list-row"
 import { blogPosts } from "@/lib/data"
 
-const sortedPosts = [...blogPosts].sort(
-  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-)
-
 export default function BlogsPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -21,8 +17,8 @@ export default function BlogsPage() {
           underneath both.
         </p>
 
-        <Section label={`${sortedPosts.length} posts`}>
-          {sortedPosts.map((post) => (
+        <Section label={`${blogPosts.length} posts`}>
+          {blogPosts.map((post) => (
             <PostRow
               key={post.slug}
               title={post.title}

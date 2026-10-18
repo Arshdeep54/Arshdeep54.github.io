@@ -529,6 +529,24 @@ export const blogPosts: BlogPost[] = [
     tags: ['AI Agents', 'Reinforcement Learning', 'Security'],
   },
   {
+    slug: 'two-parsers-one-stream',
+    title: 'Two Parsers, One Stream',
+    description:
+      'How a reverse proxy and a backend can disagree about where a request ends, and what an attacker gets when they do.',
+    date: 'Aug 2026',
+    readingTime: '6 min',
+    tags: ['Web Security', 'Networking'],
+  },
+  {
+    slug: 'ledger-pattern',
+    title: 'The Ledger Pattern',
+    description:
+      'Idempotency keys and hash-chained append-only logs, and why a bare hash chain is not enough once an AI agent holds write access.',
+    date: 'Sep 2026',
+    readingTime: '13 min',
+    tags: ['Databases', 'AI Agents', 'Security'],
+  },
+  {
     slug: 'hnsw-index-part-1',
     title: 'HNSW, Part 1: The Mental Model',
     description:
@@ -549,23 +567,5 @@ export const blogPosts: BlogPost[] = [
     tags: ['Vector Databases', 'HNSW', 'Rust'],
     externalUrl: 'https://blog.sdslabs.co/2026/03/hnsw-indexp2',
     source: 'SDSLabs Blog',
-  },
-  {
-    slug: 'two-parsers-one-stream',
-    title: 'Two Parsers, One Stream',
-    description:
-      'How a reverse proxy and a backend can disagree about where a request ends, and what an attacker gets when they do.',
-    date: 'Aug 2026',
-    readingTime: '6 min',
-    tags: ['Web Security', 'Networking'],
-  },
-  {
-    slug: 'ledger-pattern',
-    title: 'The Ledger Pattern',
-    description:
-      'Idempotency keys and hash-chained append-only logs, and why a bare hash chain is not enough once an AI agent holds write access.',
-    date: 'Sep 2026',
-    readingTime: '13 min',
-    tags: ['Databases', 'AI Agents', 'Security'],
   },
 ];

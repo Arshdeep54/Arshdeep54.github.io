@@ -38,10 +38,6 @@ export default function HomeIndex() {
     .map((id) => projects.find((p) => p.id === id))
     .filter((p) => p !== undefined)
 
-  const posts = [...blogPosts].sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-  )
-
   return (
     <>
       <div className="mx-auto max-w-[46rem] px-6 pt-28 pb-16">
@@ -92,7 +88,7 @@ export default function HomeIndex() {
         </Section>
 
         <Section label="Writing" href="/blogs" more="All posts">
-          {posts.map((post) => (
+          {blogPosts.map((post) => (
             <PostRow
               key={post.slug}
               title={post.title}
