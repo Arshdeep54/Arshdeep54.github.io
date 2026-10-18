@@ -498,6 +498,7 @@ export interface BlogPost {
   tags: string[];
   externalUrl?: string;
   source?: string;
+  series?: { name: string; part: number };
 }
 
 export const blogPosts: BlogPost[] = [
@@ -509,6 +510,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 2026',
     readingTime: '13 min',
     tags: ['Search', 'Information Retrieval', 'SPLADE'],
+    series: { name: 'Sparse Retrieval', part: 2 },
   },
   {
     slug: 'bm25',
@@ -518,6 +520,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 2026',
     readingTime: '8 min',
     tags: ['Search', 'Information Retrieval', 'BM25'],
+    series: { name: 'Sparse Retrieval', part: 1 },
   },
   {
     slug: 'read-only-tests',

@@ -12,6 +12,7 @@ import LedgerPattern from "@/components/blog-posts/ledger-pattern"
 import ReadOnlyTests from "@/components/blog-posts/read-only-tests"
 import MarkdownPost, { hasMarkdown } from "@/components/markdown-post"
 import LiveDraft from "@/components/live-draft"
+import SeriesNav from "@/components/series-nav"
 
 const content: Record<string, React.ComponentType> = {
   "two-parsers-one-stream": TwoParsersOneStream,
@@ -78,6 +79,7 @@ export default async function BlogPostPage({
         <div className="max-w-3xl mx-auto">
           <BlogHeader post={post} />
           {markdown ? <MarkdownPost slug={slug} /> : <Content />}
+          <SeriesNav post={post} />
           {markdown && process.env.NODE_ENV === "development" && <LiveDraft slug={slug} />}
         </div>
       </article>
