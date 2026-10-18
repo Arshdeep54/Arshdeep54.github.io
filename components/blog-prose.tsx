@@ -61,7 +61,7 @@ export function Fig({
   children: ReactNode
 }) {
   return (
-    <figure className="my-8 rounded border border-border bg-card p-5 sm:p-6">
+    <figure className="my-8 max-w-2xl rounded border border-border bg-card p-5 sm:p-6">
       <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={caption}>{children}</div>
       <figcaption className="mt-4 pt-3 border-t border-dashed border-border font-mono text-xs text-muted-foreground">
         {caption}
@@ -78,7 +78,7 @@ export function CodePanel({
   children: ReactNode
 }) {
   return (
-    <div className="my-6 rounded border border-border bg-card text-foreground p-5 font-mono text-sm leading-relaxed overflow-x-auto" tabIndex={0} role="region" aria-label={title}>
+    <div className="my-6 max-w-2xl rounded border border-border bg-card text-foreground p-5 font-mono text-sm leading-relaxed overflow-x-auto" tabIndex={0} role="region" aria-label={title}>
       <div className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         {title}
       </div>

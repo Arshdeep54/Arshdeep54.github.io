@@ -34,17 +34,35 @@ export function PanelLink({ id, children }: { id: string; children: ReactNode })
   )
 }
 
-export function Panel({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+export function Panel({ id, title, children }: { id: string; title: ReactNode; children: ReactNode }) {
   const { open, setOpen } = useContext(PanelContext)
   const isOpen = open === id
   const closeRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (!isOpen) return
     const back = document.activeElement as HTMLElement | null
     document.body.style.overflow = "hidden"
     closeRef.current?.focus()
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") return setOpen(null)
+      if (e.key !== "Tab" || !panelRef.current) return
+      // keep Tab inside the drawer, it's modal
+      const items = panelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])',
+      )
+      const first = items[0]
+      const last = items[items.length - 1]
+      const inside = panelRef.current.contains(document.activeElement)
+      if (e.shiftKey && (!inside || document.activeElement === first)) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && (!inside || document.activeElement === last)) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
     document.addEventListener("keydown", onKey)
     return () => {
       document.body.style.overflow = "unset"
@@ -67,6 +85,7 @@ export function Panel({ id, title, children }: { id: string; title: string; chil
           onClick={() => setOpen(null)}
         >
           <motion.aside
+            ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={`panel-${id}`}

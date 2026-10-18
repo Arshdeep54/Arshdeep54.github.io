@@ -50,7 +50,13 @@ const components: Components = {
     const lang = String((code?.properties.className as string[] | undefined)?.[0] ?? "").replace("language-", "")
     if (lang === "note") {
       const [id = "", ...title] = (meta ?? "").split(" ")
-      return <Panel id={id} title={title.join(" ")}>{render(text)}</Panel>
+      // title goes through markdown too, so $W^Q$ in it is typeset
+      const heading = (
+        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} components={{ p: ({ children }) => <>{children}</> }}>
+          {title.join(" ")}
+        </Markdown>
+      )
+      return <Panel id={id} title={heading}>{render(text)}</Panel>
     }
     if (lang === "figure") {
       if (!meta || !(meta in figures)) throw new Error(`unknown figure "${meta}"`)
@@ -64,7 +70,14 @@ const components: Components = {
     href?.startsWith("#note-") ? (
       <PanelLink id={href.slice(6)}>{children}</PanelLink>
     ) : (
-      <a href={href} className="underline decoration-accent/40 underline-offset-2 hover:text-accent">{children}</a>
+      // links to other posts open in a new tab, so the reader keeps their place in this one
+      <a
+        href={href}
+        {...(href?.startsWith("/blog/") && { target: "_blank", rel: "noopener" })}
+        className="underline decoration-accent/40 underline-offset-2 hover:text-accent"
+      >
+        {children}
+      </a>
     ),
   hr: () => <hr className="my-10 border-border" />,
   img: ({ src, alt }) => (
@@ -72,7 +85,7 @@ const components: Components = {
     <img src={typeof src === "string" ? src : undefined} alt={alt ?? ""} className="my-8 rounded border border-border" />
   ),
   table: ({ children }) => (
-    <div className="my-6 overflow-x-auto"><table className="w-full border-collapse text-sm">{children}</table></div>
+    <div className="my-6 max-w-2xl overflow-x-auto"><table className="w-full border-collapse text-sm">{children}</table></div>
   ),
   th: ({ children }) => <th className="border border-border bg-card px-3 py-2 text-left text-xs text-muted-foreground">{children}</th>,
   td: ({ children }) => <td className="border border-border px-3 py-2.5 align-top text-muted-foreground">{children}</td>,

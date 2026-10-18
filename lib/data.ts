@@ -502,6 +502,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'splade',
+    title: 'Sparse Retrieval, Part 2: SPLADE',
+    description:
+      'How SPLADE expands and reweights terms while keeping an inverted-index retrieval path.',
+    date: 'Oct 2026',
+    readingTime: '13 min',
+    tags: ['Search', 'Information Retrieval', 'SPLADE'],
+  },
+  {
     slug: 'bm25',
     title: 'Sparse Retrieval, Part 1: Building Up to BM25',
     description:
